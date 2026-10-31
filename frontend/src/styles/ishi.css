@@ -1,0 +1,515 @@
+.ishi-helper {
+  position: fixed;
+  left: max(16px, env(safe-area-inset-left));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 45;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--qn-ink);
+}
+.ishi-launcher {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 64px;
+  padding: 4px 14px 4px 4px;
+  border-radius: 36px;
+  background: var(--qn-surface);
+  border: 1px solid var(--qn-border);
+  box-shadow: 0 4px 18px #123d351a;
+  cursor: pointer;
+}
+.ishi-portrait {
+  display: block;
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--qn-tint);
+}
+.ishi-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #123d3512;
+}
+.ishi-panel {
+  position: fixed;
+  left: max(16px, env(safe-area-inset-left));
+  bottom: max(92px, calc(env(safe-area-inset-bottom) + 76px));
+  width: min(370px, calc(100vw - 32px));
+  max-height: min(640px, calc(100dvh - 112px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 20px;
+  border: 1px solid var(--qn-border);
+  background: var(--qn-surface);
+  box-shadow: 0 12px 45px #123d352b;
+  outline: none;
+}
+.ishi-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  border-bottom: 1px solid var(--qn-border);
+  background: var(--qn-soft);
+}
+.ishi-header .ishi-portrait {
+  width: 42px;
+  height: 42px;
+}
+.ishi-header h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+}
+.ishi-header p {
+  margin: 2px 0 0;
+  color: var(--qn-muted);
+  font-size: 12px;
+}
+.ishi-icon {
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.ishi-body {
+  padding: 16px;
+}
+.ishi-welcome {
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+.ishi-reply {
+  background: var(--qn-soft);
+  border: 1px solid var(--qn-border);
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  overflow-wrap: anywhere;
+}
+.ishi-reply h3 {
+  font-size: 13px;
+  font-weight: 650;
+  margin: 0 0 8px;
+}
+.ishi-reply p {
+  font-size: 14px;
+  margin: 0;
+}
+.ishi-search label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.ishi-search > div {
+  display: flex;
+  gap: 6px;
+}
+.ishi-search input {
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid var(--qn-border);
+  border-radius: 10px;
+  background: var(--qn-surface);
+}
+.ishi-send {
+  min-width: 44px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--qn-accent-text);
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.ishi-send:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.ishi-list-title {
+  color: var(--qn-muted);
+  font-size: 12px;
+  margin: 16px 0 6px;
+}
+.ishi-question-list > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 0;
+  text-align: left;
+  border-bottom: 1px solid var(--qn-border);
+  font-size: 13px;
+  cursor: pointer;
+}
+.ishi-question-list > button svg {
+  flex-shrink: 0;
+}
+.ishi-browse {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 10px;
+  color: var(--qn-accent-text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ishi-no-match {
+  font-size: 13px;
+  color: var(--qn-muted);
+}
+.ishi-footnote {
+  font-size: 11px;
+  color: var(--qn-muted);
+  padding: 12px 16px;
+  border-top: 1px solid var(--qn-border);
+  margin: 0;
+}
+.ishi-helper :is(button, input):focus-visible {
+  outline: 2px solid var(--qn-accent);
+  outline-offset: 3px;
+}
+.ishi-helper button:hover:not(:disabled) {
+  filter: brightness(0.96);
+}
+.quizna-app:has(.ishi-helper) > main:not(:has(.qn-landing)) {
+  padding-bottom: 96px;
+}
+@media (max-width: 600px) {
+  .ishi-helper {
+    left: max(12px, env(safe-area-inset-left));
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+  .ishi-launcher {
+    min-height: 58px;
+    padding-right: 12px;
+    gap: 7px;
+  }
+  .ishi-panel {
+    left: max(12px, env(safe-area-inset-left));
+    width: min(370px, calc(100vw - 24px));
+    bottom: max(82px, calc(env(safe-area-inset-bottom) + 70px));
+    max-height: min(640px, calc(100dvh - 102px));
+  }
+}
+@media print {
+  .ishi-helper {
+    display: none !important;
+  }
+  .quizna-app:has(.ishi-helper) > main:not(:has(.qn-landing)) {
+    padding-bottom: 0;
+  }
+}
+/* Compact Koala Help launcher uses QuizNa’s existing campus mascot. */
+.ishi-launcher {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  gap: 0;
+  align-items: flex-end;
+}
+.ishi-mascot {
+  display: block;
+  width: 70px;
+  height: 98px;
+  flex-shrink: 0;
+  background: url("/assistant/ishi-green-wave.png") 0 0 / 400% 100% no-repeat;
+  animation: ishi-wave 1.6s steps(4) infinite;
+}
+.ishi-launcher:hover .ishi-mascot,
+.ishi-launcher:focus-visible .ishi-mascot,
+.ishi-launcher[aria-expanded="true"] .ishi-mascot {
+  animation-play-state: paused;
+}
+.ishi-panel {
+  bottom: max(128px, calc(env(safe-area-inset-bottom) + 112px));
+  max-height: min(640px, calc(100dvh - 148px));
+}
+.ishi-live {
+  margin-top: 16px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--qn-border);
+}
+.ishi-live > h3 {
+  font-size: 14px;
+  font-weight: 650;
+  margin-bottom: 10px;
+}
+.ishi-scope {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.ishi-scope label {
+  font-size: 12px;
+  font-weight: 600;
+}
+.ishi-scope select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 44px;
+  font-size: 16px;
+  border: 1px solid var(--qn-border);
+  border-radius: 10px;
+  padding: 8px;
+  margin-top: 4px;
+  background: var(--qn-surface);
+}
+.ishi-live-topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.ishi-live-topics button {
+  min-width: 0;
+  min-height: 44px;
+  border: 1px solid var(--qn-border);
+  background: var(--qn-soft);
+  border-radius: 10px;
+  padding: 8px;
+  text-align: left;
+  font-size: 12px;
+  color: var(--qn-accent-text);
+  cursor: pointer;
+}
+.ishi-live-error {
+  font-size: 13px;
+  color: var(--qn-error-text);
+  margin-top: 10px;
+}
+.ishi-live-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--qn-muted);
+  margin-top: 10px;
+}
+.ishi-live-status button {
+  min-width: 52px;
+  min-height: 44px;
+  font-size: 12px;
+  color: var(--qn-accent-text);
+  cursor: pointer;
+}
+.ishi-live-report {
+  border: 1px solid var(--qn-border);
+  border-radius: 12px;
+  background: var(--qn-soft);
+  padding: 12px;
+  margin-top: 10px;
+  overflow-wrap: anywhere;
+}
+.ishi-live-report h4 {
+  font-size: 14px;
+  font-weight: 650;
+}
+.ishi-live-report p {
+  font-size: 13px;
+  margin-block: 6px;
+}
+.ishi-live-report .ishi-live-context {
+  font-size: 12px;
+  color: var(--qn-muted);
+}
+.ishi-live-report ul {
+  max-height: 220px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 3px;
+}
+.ishi-live-report li {
+  padding-block: 8px;
+  border-top: 1px solid var(--qn-border);
+  font-size: 13px;
+}
+.ishi-live-report li > span {
+  display: block;
+  font-size: 12px;
+}
+.ishi-live-report small {
+  display: block;
+  font-size: 11px;
+  color: var(--qn-muted);
+  margin-top: 8px;
+}
+.quizna-app:has(.ishi-helper) > main:not(:has(.qn-landing)) {
+  padding-bottom: 72px;
+}
+@keyframes ishi-wave {
+  to {
+    background-position: 133.333333% 0;
+  }
+}
+@media (max-width: 600px) {
+  .ishi-launcher {
+    padding: 0;
+    gap: 0;
+  }
+  .ishi-mascot {
+    width: 62px;
+    height: 88px;
+  }
+  .ishi-panel {
+    bottom: max(112px, calc(env(safe-area-inset-bottom) + 100px));
+    max-height: min(640px, calc(100dvh - 132px));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ishi-mascot {
+    animation: none;
+  }
+}
+@media print {
+  .quizna-app:has(.ishi-helper) > main:not(:has(.qn-landing)) {
+    padding-bottom: 0;
+  }
+}
+
+/* The mascot is the launcher; its label appears only on hover or keyboard focus. */
+.ishi-launcher {
+  position: relative;
+  border-radius: 12px;
+}
+.ishi-tooltip {
+  position: absolute;
+  left: calc(100% + 4px);
+  bottom: 14px;
+  padding: 7px 11px;
+  border: 1px solid var(--qn-border);
+  border-radius: 10px;
+  background: var(--qn-surface);
+  box-shadow: 0 4px 18px #123d351a;
+  color: var(--qn-ink);
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.ishi-launcher:not([aria-expanded="true"]):focus-visible .ishi-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+@media (hover: hover) {
+  .ishi-launcher:not([aria-expanded="true"]):hover .ishi-tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.ishi-head-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url("/assistant/ishi-green-wave.png");
+  background-size: 1000% auto;
+  background-position: -36px -2px;
+  background-repeat: no-repeat;
+}
+
+.ishi-welcome,
+.ishi-reply p,
+.ishi-question-list > button {
+  line-height: 1.55;
+}
+.ishi-records > .ishi-browse {
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--qn-border);
+}
+.ishi-records > .ishi-browse > span {
+  font-size: 18px;
+}
+
+/* Approximately 1 cm at the standard CSS pixel scale, with a 44px tap target. */
+.ishi-launcher {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+.ishi-mascot {
+  width: 38px;
+  height: 38px;
+  background: url("/quizna-campus.png") center / contain no-repeat;
+  animation: none;
+  border-radius: 11px;
+}
+.ishi-head-shot {
+  background: url("/quizna-campus.png") center / cover no-repeat;
+}
+.ishi-panel {
+  bottom: max(68px, calc(env(safe-area-inset-bottom) + 56px));
+  max-height: min(640px, calc(100dvh - 88px));
+}
+@keyframes koala-hello {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  35% {
+    transform: rotate(-5deg);
+  }
+  65% {
+    transform: rotate(4deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ishi-mascot {
+    animation: koala-hello 1200ms ease-in-out 2;
+  }
+}
+
+/* Full-body assistant cutout; the separate conversation avatar uses its face. */
+.ishi-launcher {
+  width: 56px;
+  min-width: 56px;
+  height: 70px;
+  min-height: 70px;
+}
+.ishi-mascot {
+  width: 52px;
+  height: 64px;
+  border-radius: 0;
+  background: url("/assistant/koala-full-body.png") center / contain no-repeat;
+  transform-origin: 50% 90%;
+}
+.ishi-head-shot {
+  background: url("/assistant/koala-full-body.png") center 2% / 145% auto
+    no-repeat;
+}
+.ishi-panel {
+  bottom: max(94px, calc(env(safe-area-inset-bottom) + 82px));
+  max-height: min(640px, calc(100dvh - 114px));
+}
+.quizna-app:has(.ishi-helper) > main:not(:has(.qn-landing)) {
+  padding-bottom: 96px;
+}
+@media print {
+  .quizna-app:has(.ishi-helper) > main:not(:has(.qn-landing)) {
+    padding-bottom: 0;
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "runId": "2026-10-30T09-49-36-120Z",
+  "results": [
+    {
+      "name": "typecheck",
+      "status": "PASS",
+      "seconds": 5
+    },
+    {
+      "name": "production-build",
+      "status": "PASS",
+      "seconds": 10
+    },
+    {
+      "name": "postgres-integration",
+      "status": "PASS",
+      "seconds": 3,
+      "passedChecks": 104
+    },
+    {
+      "name": "backend-unit",
+      "status": "PASS",
+      "seconds": 11,
+      "passedChecks": 233
+    },
+    {
+      "name": "frontend-unit",
+      "status": "PASS",
+      "seconds": 22,
+      "passedChecks": 194
+    },
+    {
+      "name": "gateway",
+      "status": "PASS",
+      "seconds": 0
+    },
+    {
+      "name": "api-abuse",
+      "status": "PASS",
+      "seconds": 1,
+      "passedChecks": 38
+    },
+    {
+      "name": "client-boundary",
+      "status": "PASS",
+      "seconds": 1
+    },
+    {
+      "name": "isolated-mysql",
+      "status": "PASS",
+      "seconds": 21
+    },
+    {
+      "name": "production-audit",
+      "status": "PASS",
+      "seconds": 1,
+      "advisories": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      }
+    },
+    {
+      "name": "development-audit",
+      "status": "WARN",
+      "seconds": 1,
+      "advisories": {
+        "info": 0,
+        "low": 9,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 9
+      }
+    }
+  ],
+  "scope": "Automated QA plus disposable XAMPP database",
+  "manualChecksPending": [
+    "Physical phone camera and print accuracy",
+    "Real handwriting and optional AI-provider quality",
+    "Phone/tablet browser interaction and accessibility review",
+    "500-user capacity test on staging",
+    "Deployed Supabase Auth/Realtime and Render configuration"
+  ],
+  "passed": true,
+  "warnings": [
+    "development-audit"
+  ]
+}

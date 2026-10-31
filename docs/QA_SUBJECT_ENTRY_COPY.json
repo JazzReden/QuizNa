@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "checks": 15,
+  "scenarios": [
+    "Repeated subject joining enrolls one roster entry",
+    "Protected quiz does not reveal its entry code",
+    "Checking quiz code does not consume an attempt or start time",
+    "Reconnect restores the same deadline and saved written answer",
+    "Concurrent submissions return one result",
+    "Completed attempt limit disables further entry",
+    "Graded but unconfirmed result does not count in totals",
+    "Teacher confirmation adds the correct total",
+    "Student score remains held until released",
+    "Teacher release reveals the confirmed score",
+    "Copy retries create one independent draft with scores held",
+    "Copy retains questions, points and essay criteria",
+    "Copy has no inherited submissions",
+    "Copied quiz has a distinct section code",
+    "No-code option opens subject quizzes directly"
+  ],
+  "disposableQaDatabase": true
+}

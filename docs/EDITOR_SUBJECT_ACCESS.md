@@ -1,0 +1,7 @@
+# Quiz editor subject access and quiz view controls
+
+The reported New quiz "Forbidden" screen was reproduced by opening a subject owned by a different teacher with the demo teacher session. The authorization denial is correct; the UI defect was continuing to display an empty editable form after failing to load its subject. The editor now waits for subject authorization, prevents save attempts until it succeeds, cancels stale requests, and shows recovery actions for unavailable or unowned subjects. Choosing My subjects and opening an owned subject preselects its subject name and section. Existing ownership permissions remain enforced; no subject is transferred or shared implicitly. The backend returns a clearer teacher-account error message.
+
+Class list and Analysis now have icon buttons, solid selected state, hover/focus contrast, and touch-sized targets. Search and export actions share a compact toolbar in a quiz workspace. Exports still follow existing section/status rules. Guidance: https://www.carbondesignsystem.com/building-blocks/core/components/tabs/guidelines and https://design-system.service.gov.uk/components/tabs/.
+
+Validation: 152 frontend tests including four subject-context regressions; six backend subject tests; TypeScript checks; build; live owned/unowned subject checks and XAMPP unchanged-data checks. Browser phone layout at 390px has no horizontal page overflow. Owned/unowned editor routes and both view buttons were exercised in the browser. Existing quizzes, answers, scores, and rosters were not changed.

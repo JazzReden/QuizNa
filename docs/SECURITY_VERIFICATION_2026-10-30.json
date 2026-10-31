@@ -1,0 +1,27 @@
+{
+  "vite": "6.4.5",
+  "productionAdvisories": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "allAdvisories": {
+    "info": 0,
+    "low": 9,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 9
+  },
+  "remainingDevelopmentIssue": "GHSA-gcqx-w48m-w2h4: deepmerge; no patched upstream release",
+  "privateFileAndConfiguredSecretChecksPassed": true,
+  "apiAbuseChecks": 38,
+  "backendTests": 233,
+  "frontendTests": 194,
+  "databaseChecks": 104,
+  "gatewayTests": 4,
+  "existingScoresUnchanged": true
+}

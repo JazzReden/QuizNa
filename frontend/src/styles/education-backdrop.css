@@ -1,0 +1,227 @@
+/* Lightweight stationery shapes frame the content without covering controls. */
+.ql-home .ql-hero-copy,
+.qa-access {
+  position: relative;
+  isolation: isolate;
+}
+.qe-backdrop {
+  position: absolute;
+  inset: 0 calc((100% - 100vw) / 2);
+  z-index: -1;
+  mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent);
+  pointer-events: none;
+  user-select: none;
+  background:
+    radial-gradient(
+      ellipse at 6% 25%,
+      color-mix(in srgb, var(--qn-tint) 90%, transparent),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 94% 74%,
+      color-mix(in srgb, #eddbb5 28%, transparent),
+      transparent 35%
+    );
+}
+.qe-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--qn-accent) 8%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--qn-accent) 8%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+  mask-image: radial-gradient(
+    ellipse,
+    transparent 18%,
+    #000 80%,
+    transparent 100%
+  );
+}
+.qe-token {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border: 1px solid color-mix(in srgb, var(--qn-accent) 18%, transparent);
+  border-radius: 22px;
+  color: var(--qn-accent-text);
+  background: color-mix(in srgb, var(--qn-surface) 85%, var(--qn-tint));
+  box-shadow: 0 12px 30px rgb(35 85 60 / 5%);
+  transform: rotate(var(--qe-tilt));
+}
+.qe-token svg {
+  width: 37px;
+  height: 37px;
+}
+.qe-book {
+  left: 4%;
+  top: 19%;
+  --qe-tilt: -12deg;
+}
+.qe-pencil {
+  right: 5%;
+  top: 22%;
+  --qe-tilt: 12deg;
+  background: color-mix(in srgb, var(--qn-surface) 82%, #efce8b);
+}
+.qe-cap {
+  left: 8%;
+  bottom: 19%;
+  --qe-tilt: 8deg;
+}
+.qe-ruler {
+  right: 7%;
+  bottom: 17%;
+  --qe-tilt: -10deg;
+  background: color-mix(in srgb, var(--qn-surface) 85%, #bfcce8);
+}
+.qe-spark {
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  color: #b69a55;
+  opacity: 0.65;
+}
+.qe-spark-one {
+  left: 21%;
+  top: 12%;
+}
+.qe-spark-two {
+  right: 21%;
+  bottom: 12%;
+}
+.qe-ring {
+  position: absolute;
+  right: 16%;
+  top: 12%;
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--qn-accent);
+  border-radius: 50%;
+  opacity: 0.25;
+}
+.qa-access .qe-book {
+  left: 8%;
+}
+.qa-access .qe-pencil {
+  right: 8%;
+}
+.qa-access .qe-cap {
+  left: 12%;
+}
+.qa-access .qe-ruler {
+  right: 12%;
+}
+@keyframes qe-drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--qe-tilt));
+  }
+  50% {
+    transform: translateY(-9px) rotate(var(--qe-tilt));
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .qe-token {
+    animation: qe-drift 9s ease-in-out 2;
+  }
+  .qe-pencil {
+    animation-delay: -3s;
+  }
+  .qe-cap {
+    animation-delay: -5s;
+  }
+  .qe-ruler {
+    animation-delay: -2s;
+  }
+}
+@media (max-width: 1000px) {
+  .qe-token {
+    width: 58px;
+    height: 58px;
+    border-radius: 17px;
+  }
+  .qe-token svg {
+    width: 28px;
+    height: 28px;
+  }
+  .qe-book {
+    left: 1%;
+    top: 10%;
+  }
+  .qe-pencil {
+    right: 1%;
+    top: 12%;
+  }
+  .qe-cap {
+    left: 2%;
+    bottom: 9%;
+  }
+  .qe-ruler {
+    right: 2%;
+    bottom: 7%;
+  }
+  .qa-access :is(.qe-book, .qe-cap) {
+    left: 1%;
+  }
+  .qa-access :is(.qe-pencil, .qe-ruler) {
+    right: 1%;
+  }
+}
+@media (max-width: 600px) {
+  .qe-token {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    opacity: 0.55;
+  }
+  .qe-token svg {
+    width: 21px;
+    height: 21px;
+  }
+  .qe-book {
+    top: 4%;
+    left: 0;
+  }
+  .qe-pencil {
+    top: 5%;
+    right: 0;
+  }
+  .qe-cap {
+    bottom: 5%;
+    left: 0;
+  }
+  .qe-ruler {
+    bottom: 3%;
+    right: 0;
+  }
+  .qe-spark-one,
+  .qe-ring {
+    display: none;
+  }
+  .qe-spark-two {
+    right: 12%;
+    bottom: 2%;
+    width: 16px;
+    height: 16px;
+  }
+  .qa-access .qe-token {
+    opacity: 0.35;
+  }
+  .qe-grid {
+    background-size: 32px 32px;
+  }
+}
+@media print {
+  .qe-backdrop {
+    display: none;
+  }
+}

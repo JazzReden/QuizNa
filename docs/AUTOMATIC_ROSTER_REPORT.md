@@ -1,0 +1,19 @@
+# Automatic section enrollment and teacher cleanup
+
+Starting a new quiz attempt using a section code now adds the signed-in student's registered name and normalized email to that reusable section's roster. Repeating starts, reconnecting, retaking, and starting another quiz linked to the same class do not duplicate membership. Existing teacher-entered names are preserved. The entry becomes available to other quizzes using the same reusable class. Invalid starts and general unassigned codes do not enroll students. Resuming an old attempt does not undo a teacher's deliberate roster removal; a subsequent new attempt can re-enroll the student.
+
+Sections no longer has an Add students button or paste/import form. Its student list explains automatic joining and retains removal, code copying and section management. Class list no longer repeats the Best score column; it retains status filters, names, section, grading state and Review. Scores remain in Gradebook and Leaderboard. Gradebook empty states now explain joining through quiz starts.
+
+Enrollment is inside the existing local MySQL start transaction and locks the reusable section while checking normalized emails. The existing database uniqueness constraint remains the final protection. Hosted PostgreSQL uses migration `07_automatic_roster.sql`, whose trigger inserts with ON CONFLICT DO NOTHING in the attempt transaction. The trigger validates student role and section/quiz/class ownership, has a fixed empty search_path, and grants no direct roster access to students. Local XAMPP needs no new migration. Apply migration 07 to a hosted Supabase project before deploying this behavior there; it has not been applied to an external project in this turn.
+
+Existing manual-entry backend endpoints are retained for authorized seeds, existing integrations and backwards compatibility. Existing roster entries, quizzes, submissions and grades were not rewritten. Known roster members without an attempt in another linked quiz appear Not started. Students who have never joined the section cannot be counted before the application knows they belong there. Possessing a section code permits joining it; this is not an independently verified school enrollment system.
+
+Validation passed:
+- Frontend TypeScript/Vite and Nest builds.
+- 113 Jest unit tests, including concurrent starts across quizzes, normalized duplicate checks, preserving teacher roster names, invalid-code/role protection and unassigned starts.
+- 67 XAMPP integration checks, including winning/losing simultaneous section-code starts, concurrent reconnects, access controls, persistence, scores and CSV regression checks.
+- 62 embedded PostgreSQL checks, including migrations, automatic enrollment, retakes preserving names, roster RLS privacy and rolling back enrollment when attempt creation fails. Embedded PostgreSQL does not simulate multiple independent database connections; local MySQL and unit concurrency tests cover the available concurrent paths.
+
+## Fresh student joining two quizzes — October 21, 2026
+
+Added a permanent HTTP regression scenario using a newly registered disposable student who is not manually imported. The first section-code quiz start creates one roster row. A second quiz using the same reusable section keeps that exact row ID, while creating a distinct attempt for its quiz. Four concurrent repeat starts across both quizzes reuse the same two attempts and leave one membership. Each quiz class list contains the student once as In progress. After an actual isolated API restart, the same single roster row remains. All 74 XAMPP integration checks passed. The fixture accounts/quizzes were cleaned up; existing sample classrooms and scores were not used as test fixtures. The frontend and backend production builds passed and local servers were started on ports 5173 and 3002. Browser security blocked automatic tab access; a direct localhost link was provided instead.

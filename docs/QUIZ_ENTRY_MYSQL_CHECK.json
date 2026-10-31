@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "protectedCodeHiddenFromStudentList": true,
+  "wrongCodeRejectedWithoutAttempt": true,
+  "correctCodeChecksExactQuizAndSection": true,
+  "directEntryOptionVerified": true,
+  "entryDoesNotStartTimer": true,
+  "activeAttemptResumesSameDeadline": true,
+  "existingQuizzesScoresRostersAndSubjectsUnchanged": true,
+  "temporaryRecordsRemoved": true
+}

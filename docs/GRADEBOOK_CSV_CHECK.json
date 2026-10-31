@@ -1,0 +1,27 @@
+{
+  "verifiedAt": "2026-10-25",
+  "source": "Downloaded from teacher gradebook Export CSV button",
+  "section": "Grade 12 St. Vincent",
+  "studentCount": 14,
+  "columns": [
+    "Student",
+    "Personal Development (Sample)",
+    "Practical Research: Evidence and Experiments (Sample)",
+    "Environmental Science \u2014 Paper Practice (Sample)",
+    "Environmental Literacy - 60-Question Paper Sample",
+    "Practical Research: Sampling and Data Collection (Sample)",
+    "Total"
+  ],
+  "ben": [
+    "Ben Cruz",
+    "9.5/10",
+    "6/12",
+    "10/10",
+    "Not started",
+    "8/10",
+    "33.5/42"
+  ],
+  "lastNameOrder": true,
+  "cleanColumns": true,
+  "existingScoresEdited": false
+}

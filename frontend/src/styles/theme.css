@@ -1,0 +1,316 @@
+/* Semantic surfaces keep public pages, records, dialogs and Ishi in one theme. */
+:root {
+  --qn-canvas: #f5f9f6;
+  --qn-surface: #ffffff;
+  --qn-soft: #edf5ef;
+  --qn-tint: #e1f1e6;
+  --qn-ink: #1e352a;
+  --qn-muted: #536d5e;
+  --qn-border: #d9e7dc;
+  --qn-border-strong: #adcfb8;
+  --qn-accent: #357f5f;
+  --qn-accent-hover: #2c7051;
+  --qn-accent-text: #2e7355;
+  --qn-on-accent: #ffffff;
+  --qn-footer: #e3efe5;
+  --qn-footer-ink: #244331;
+  --qn-error-bg: #fff2f2;
+  --qn-error-border: #efc6c9;
+  --qn-error-text: #9b2834;
+  --qn-warning-bg: #fcf7e9;
+  --qn-warning-text: #806021;
+  --qn-shadow: 0 8px 28px rgb(29 64 42 / 0.035);
+}
+body {
+  background: var(--qn-canvas);
+  color: var(--qn-ink);
+}
+.qn-app-header,
+.qn-catalog,
+.ishi-panel {
+  background: var(--qn-surface);
+}
+.qn-brand-mark,
+.ql-footer .qn-brand-mark {
+  background: transparent;
+}
+.qn-brand-mark img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.qn-button-primary,
+.qn-skip-link {
+  background: var(--qn-accent);
+  color: var(--qn-on-accent);
+}
+.qn-button-primary:hover {
+  background: var(--qn-accent-hover);
+}
+.qn-catalog {
+  border-radius: 16px;
+  box-shadow: var(--qn-shadow);
+}
+.qn-theme-toggle {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--qn-border);
+  color: var(--qn-muted);
+  background: var(--qn-surface);
+}
+.qn-theme-toggle:hover {
+  color: var(--qn-accent-text);
+  background: var(--qn-soft);
+}
+.ql-footer {
+  background: var(--qn-footer);
+  color: var(--qn-footer-ink);
+}
+.ql-footer
+  :is(
+    .qn-brand,
+    .ql-footer-links > span,
+    .ql-footer-connect > span,
+    a,
+    a:hover
+  ) {
+  color: var(--qn-footer-ink);
+}
+.ql-footer-about p,
+.ql-footer-bottom {
+  color: var(--qn-muted);
+}
+.ql-footer-bottom,
+.ql-socials a {
+  border-color: var(--qn-border-strong);
+}
+.ql-socials a:hover {
+  background: var(--qn-tint);
+}
+.ql-footer .qn-brand-mark {
+  background: transparent;
+}
+.ishi-send {
+  background: var(--qn-accent);
+  color: var(--qn-on-accent);
+}
+.ishi-header {
+  background: var(--qn-soft);
+}
+.ishi-live-topics button {
+  color: var(--qn-accent-text);
+}
+@media screen {
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --qn-canvas: #101913;
+    --qn-surface: #19251d;
+    --qn-soft: #202f25;
+    --qn-tint: #284031;
+    --qn-ink: #edf4ee;
+    --qn-muted: #b0c1b3;
+    --qn-border: #344a3a;
+    --qn-border-strong: #536d5c;
+    --qn-accent: #9bd2ad;
+    --qn-accent-hover: #b3dfc0;
+    --qn-accent-text: #a4dbb7;
+    --qn-on-accent: #102b1b;
+    --qn-footer: #14231a;
+    --qn-footer-ink: #d5e9d9;
+    --qn-error-bg: #3b2228;
+    --qn-error-border: #6f3d48;
+    --qn-error-text: #f1acb6;
+    --qn-warning-bg: #342d1c;
+    --qn-warning-text: #ebcf8f;
+    --qn-shadow: 0 8px 28px rgb(0 0 0 / 0.12);
+    --color-slate-50: #101913;
+    --color-slate-100: #202f25;
+    --color-slate-200: #344a3a;
+    --color-slate-300: #536d5c;
+    --color-slate-400: #92ac9a;
+    --color-slate-500: #b0c1b3;
+    --color-slate-600: #bdcdc3;
+    --color-slate-700: #d0ded5;
+    --color-slate-800: #e1ece5;
+    --color-slate-900: #edf4ee;
+    --color-slate-950: #f5fcf6;
+    --color-indigo-50: #192f22;
+    --color-indigo-100: #264630;
+    --color-indigo-200: #3a6447;
+    --color-indigo-300: #659773;
+    --color-indigo-400: #85bb94;
+    --color-indigo-500: #8dc89e;
+    --color-indigo-600: #9bd2ad;
+    --color-indigo-700: #acdcbc;
+    --color-indigo-800: #bce5c9;
+    --color-indigo-900: #d0eed8;
+    --color-indigo-950: #e6f9eb;
+    --color-violet-500: #8dc89e;
+    --color-violet-600: #9bd2ad;
+    --color-purple-500: #8dc89e;
+    --color-purple-600: #9bd2ad;
+    --color-emerald-50: #192f22;
+    --color-emerald-100: #23462f;
+    --color-emerald-200: #386347;
+    --color-emerald-300: #659773;
+    --color-emerald-400: #85bb94;
+    --color-emerald-500: #8dc89e;
+    --color-emerald-600: #9bd2ad;
+    --color-emerald-700: #acdcbc;
+    --color-emerald-800: #bce5c9;
+    --color-emerald-900: #d0eed8;
+    --color-amber-50: #342d1c;
+    --color-amber-100: #473c20;
+    --color-amber-200: #6b5829;
+    --color-amber-600: #e1bd69;
+    --color-amber-700: #ebcf8f;
+    --color-amber-800: #f2daa7;
+    --color-amber-900: #f8e7c2;
+    --color-rose-50: #3b2228;
+    --color-rose-100: #4d2932;
+    --color-rose-200: #6f3d48;
+    --color-rose-600: #be3e53;
+    --color-rose-700: #f1acb6;
+    --color-rose-800: #f8c3cc;
+    --color-rose-900: #ffdae1;
+  }
+  [data-theme="dark"] :is(.bg-white, .hover\:bg-white:hover) {
+    background-color: var(--qn-surface);
+  }
+  [data-theme="dark"]
+    :is(
+      .bg-indigo-500,
+      .bg-indigo-600,
+      .bg-indigo-700,
+      .bg-indigo-800,
+      .hover\:bg-indigo-600:hover,
+      .hover\:bg-indigo-700:hover,
+      .hover\:bg-indigo-800:hover
+    ) {
+    color: var(--qn-on-accent);
+  }
+  [data-theme="dark"]
+    :is(input:not([type="checkbox"]):not([type="radio"]), textarea, select) {
+    background-color: var(--qn-surface);
+    color: var(--qn-ink);
+  }
+  [data-theme="dark"] .paper-camera {
+    color: white;
+    background: #020617;
+  }
+  [data-theme="dark"] .paper-camera :is(button, select) {
+    color: white;
+  }
+  [data-theme="dark"] :is(.ql-paper-dot, .ql-corner, .ql-filled) {
+    background: var(--qn-accent);
+  }
+  [data-theme="dark"] .ql-card-chip {
+    background: var(--qn-tint);
+    color: var(--qn-ink);
+  }
+}
+@media (max-width: 420px) {
+  .qn-app-header .qn-profile {
+    display: none;
+  }
+  .qn-app-header .qn-header-bar > div {
+    gap: 4px;
+  }
+  .qn-app-header .qn-header-bar {
+    gap: 8px;
+  }
+}
+@media (max-width: 600px) {
+  .ql-nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .ql-nav .qn-theme-toggle {
+    order: 5;
+  }
+}
+@media print {
+  .qn-theme-toggle {
+    display: none !important;
+  }
+}
+/* Keep appearance control beside the logo on compact public headers. */
+.ql-header .ql-nav {
+  margin-left: auto;
+}
+.ql-header > .qn-theme-toggle {
+  flex-shrink: 0;
+}
+@media (max-width: 720px) {
+  .ql-header .qn-brand {
+    order: 0;
+  }
+  .ql-header > .qn-theme-toggle {
+    order: 1;
+    margin-left: auto;
+  }
+  .ql-header .ql-nav {
+    order: 2;
+    margin-left: 0;
+  }
+}
+@media screen {
+  [data-theme="dark"] [class~="bg-slate-900/70"] {
+    background-color: rgb(6 14 9 / 0.75);
+  }
+  [data-theme="dark"] .paper-camera {
+    --color-slate-100: #f1f5f9;
+    --color-slate-200: #e2e8f0;
+    --color-slate-600: #475569;
+    --color-slate-800: #1e293b;
+    --color-slate-900: #0f172a;
+    --color-slate-950: #020617;
+  }
+  [data-theme="dark"] .paper-camera .bg-white {
+    background-color: #fff;
+    color: #0f172a;
+  }
+}
+/* Campus emblem: modestly larger, with the separate QuizNa wordmark retained. */
+.qn-brand-mark-small {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+.ql-header .qn-brand-mark {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+}
+@media (max-width: 600px) {
+  .ql-header .qn-brand-mark {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* Unframed theme control: the icon stays clear, with a full touch target. */
+.qn-theme-toggle {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #87919b;
+}
+.qn-theme-toggle:focus-visible {
+  outline: 2px solid var(--qn-accent);
+  outline-offset: 3px;
+}
+@media screen {
+  [data-theme="dark"] .qn-theme-toggle {
+    color: var(--qn-muted);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .qn-theme-toggle {
+    transition:
+      color 160ms ease,
+      background-color 160ms ease;
+  }
+}

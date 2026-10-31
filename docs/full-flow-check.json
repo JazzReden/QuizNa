@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "verifiedAt": "2026-10-30T09:50:19.465Z",
+  "database": "XAMPP MariaDB",
+  "checks": 22,
+  "scenarios": [
+    "Fresh teacher and student registration and password login",
+    "Teacher creates all four question types",
+    "Published code opens instructions without answer keys",
+    "Invalid access code rejected",
+    "Teacher ownership and student role restrictions",
+    "Attempt contains all questions without private grading data",
+    "Repeated autosave updates answers without duplicate records",
+    "Restart restores login, same attempt, deadline, saved answers and ordering",
+    "Later publishing preserves the student’s assigned questions",
+    "Concurrent manual submissions finalize one attempt",
+    "Submission receipt preserves four answers while scores and keys remain hidden",
+    "All objective types grade automatically using frozen answers; essay awaits teacher",
+    "Completed attempt counts toward attempt limit",
+    "Teacher grading recalculates final score and review status",
+    "Completed manual grading does not release scores early",
+    "Teacher releases scores independently from correct answers",
+    "Student review shows readable choices, original key and teacher feedback",
+    "Student dashboard receives released score",
+    "CSV export and quiz statistics include the completed student",
+    "Teacher monitoring includes the completed attempt",
+    "Repeated submission preserves manual grades",
+    "Logout revokes student session"
+  ]
+}

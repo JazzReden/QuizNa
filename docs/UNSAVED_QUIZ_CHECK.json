@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-27T11:54:45.977Z",
+  "concurrentCreateReusesQuiz": true,
+  "questionTypesSaved": [
+    "mcq",
+    "true_false",
+    "short_answer",
+    "essay"
+  ],
+  "repeatedQuestionsNotDuplicated": true,
+  "concurrentBatchesNotDuplicated": true,
+  "savedQuestionCount": 4,
+  "publishedVersionUnchanged": true,
+  "existingQuizzesAndScoresUnchanged": true
+}

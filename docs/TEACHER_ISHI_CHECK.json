@@ -1,0 +1,133 @@
+{
+  "checks": [
+    {
+      "buttons": 0,
+      "panel": {
+        "bottom": 762,
+        "height": 561.5,
+        "left": 12,
+        "right": 308,
+        "top": 200.5,
+        "width": 296,
+        "x": 12,
+        "y": 200.5
+      },
+      "role": "teacher",
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "buttons": 0,
+      "panel": {
+        "bottom": 762,
+        "height": 529.5,
+        "left": 12,
+        "right": 378,
+        "top": 232.5,
+        "width": 366,
+        "x": 12,
+        "y": 232.5
+      },
+      "role": "teacher",
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "buttons": 0,
+      "panel": {
+        "bottom": 752,
+        "height": 529.5,
+        "left": 16,
+        "right": 386,
+        "top": 222.5,
+        "width": 370,
+        "x": 16,
+        "y": 222.5
+      },
+      "role": "teacher",
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "buttons": 0,
+      "panel": {
+        "bottom": 752,
+        "height": 529.5,
+        "left": 16,
+        "right": 386,
+        "top": 222.5,
+        "width": 370,
+        "x": 16,
+        "y": 222.5
+      },
+      "role": "teacher",
+      "scroll": 1024,
+      "width": 1024
+    },
+    {
+      "buttons": 0,
+      "panel": {
+        "bottom": 762,
+        "height": 640,
+        "left": 12,
+        "right": 308,
+        "top": 122,
+        "width": 296,
+        "x": 12,
+        "y": 122
+      },
+      "role": "student",
+      "scroll": 320,
+      "width": 320
+    },
+    {
+      "buttons": 0,
+      "panel": {
+        "bottom": 762,
+        "height": 640,
+        "left": 12,
+        "right": 378,
+        "top": 122,
+        "width": 366,
+        "x": 12,
+        "y": 122
+      },
+      "role": "student",
+      "scroll": 390,
+      "width": 390
+    },
+    {
+      "buttons": 0,
+      "panel": {
+        "bottom": 752,
+        "height": 640,
+        "left": 16,
+        "right": 386,
+        "top": 112,
+        "width": 370,
+        "x": 16,
+        "y": 112
+      },
+      "role": "student",
+      "scroll": 768,
+      "width": 768
+    },
+    {
+      "buttons": 0,
+      "panel": {
+        "bottom": 752,
+        "height": 640,
+        "left": 16,
+        "right": 386,
+        "top": 112,
+        "width": 370,
+        "x": 16,
+        "y": 112
+      },
+      "role": "student",
+      "scroll": 1024,
+      "width": 1024
+    }
+  ],
+  "quizOrScoreWrites": false
+}

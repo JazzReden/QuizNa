@@ -1,0 +1,77 @@
+{
+  "layout": [
+    {
+      "panel": {
+        "bottom": 732,
+        "height": 640,
+        "left": 12,
+        "right": 308,
+        "top": 92,
+        "width": 296,
+        "x": 12,
+        "y": 92
+      },
+      "scroll": 320,
+      "smallControls": 0,
+      "width": 320
+    },
+    {
+      "panel": {
+        "bottom": 732,
+        "height": 640,
+        "left": 12,
+        "right": 378,
+        "top": 92,
+        "width": 366,
+        "x": 12,
+        "y": 92
+      },
+      "scroll": 390,
+      "smallControls": 0,
+      "width": 390
+    },
+    {
+      "panel": {
+        "bottom": 716,
+        "height": 640,
+        "left": 16,
+        "right": 386,
+        "top": 76,
+        "width": 370,
+        "x": 16,
+        "y": 76
+      },
+      "scroll": 768,
+      "smallControls": 0,
+      "width": 768
+    },
+    {
+      "panel": {
+        "bottom": 716,
+        "height": 640,
+        "left": 16,
+        "right": 386,
+        "top": 76,
+        "width": 370,
+        "x": 16,
+        "y": 76
+      },
+      "scroll": 1024,
+      "smallControls": 0,
+      "width": 1024
+    }
+  ],
+  "automaticRefresh": {
+    "before": [
+      "2026-10-25T13:10:27.786Z"
+    ],
+    "after": [
+      "2026-10-25T13:10:42.827Z"
+    ],
+    "draftPreserved": true
+  },
+  "teacherBenTotal": "33.5/42",
+  "studentBenScore": "8/10",
+  "studentBenOverall": "79.76%",
+  "scoresEdited": false
+}

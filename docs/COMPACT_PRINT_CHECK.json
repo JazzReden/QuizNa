@@ -1,0 +1,13 @@
+{
+  "pages": 3,
+  "blankAnswersVerified": 55,
+  "syntheticMarkedAnswersVerified": 55,
+  "essaysForManualGrading": 5,
+  "qrPagesVerified": 3,
+  "oldSheetsPreserved": 15,
+  "existingScoresPreserved": 45,
+  "backendTests": 135,
+  "frontendTests": 27,
+  "authenticatedPaperChecks": 32,
+  "physicalCameraTested": false
+}

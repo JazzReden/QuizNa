@@ -1,0 +1,144 @@
+{
+  "teacherEmail": "demo.teacher.e9d067@quizna.test",
+  "verifiedAt": "2026-10-20T15:49:01.871Z",
+  "classes": [
+    {
+      "section": "Grade 12 St. Vincent",
+      "classId": "c1f4c06e-f40b-4e4c-934d-dc64ee33e0e5",
+      "quizId": "22950f2d-ee77-4167-88ed-044ebddb7009",
+      "title": "Personal Development (Sample)",
+      "accessCode": "S-CEA0BE9C",
+      "students": 10,
+      "submitted": 10,
+      "graded": 10,
+      "scores": [
+        {
+          "student": "Ana Reyes",
+          "score": 10,
+          "outOf": 10,
+          "rank": 1
+        },
+        {
+          "student": "Ben Cruz",
+          "score": 9.5,
+          "outOf": 10,
+          "rank": 2
+        },
+        {
+          "student": "Carla Santos",
+          "score": 8,
+          "outOf": 10,
+          "rank": 3
+        },
+        {
+          "student": "Francis Mendoza",
+          "score": 8,
+          "outOf": 10,
+          "rank": 3
+        },
+        {
+          "student": "Ella Garcia",
+          "score": 7.5,
+          "outOf": 10,
+          "rank": 5
+        },
+        {
+          "student": "Daniel Torres",
+          "score": 7,
+          "outOf": 10,
+          "rank": 6
+        },
+        {
+          "student": "Gabrielle Flores",
+          "score": 5.5,
+          "outOf": 10,
+          "rank": 7
+        },
+        {
+          "student": "Ivan Ramos",
+          "score": 4.5,
+          "outOf": 10,
+          "rank": 8
+        },
+        {
+          "student": "Hannah Castillo",
+          "score": 4,
+          "outOf": 10,
+          "rank": 9
+        },
+        {
+          "student": "Julia Navarro",
+          "score": 1,
+          "outOf": 10,
+          "rank": 10
+        }
+      ]
+    },
+    {
+      "section": "Grade 12 St. Filomena",
+      "classId": "65fa53dc-04f1-4213-a106-83d329f8e8bf",
+      "quizId": "ccc0e59d-990b-469f-b6bb-724b7adef7a7",
+      "title": "Media and Information Literacy (Sample)",
+      "accessCode": "S-FA98C6CE",
+      "students": 9,
+      "submitted": 9,
+      "graded": 9,
+      "scores": [
+        {
+          "student": "Bea Bautista",
+          "score": 10,
+          "outOf": 10,
+          "rank": 1
+        },
+        {
+          "student": "Adrian Aquino",
+          "score": 9.5,
+          "outOf": 10,
+          "rank": 2
+        },
+        {
+          "student": "Faye Lim",
+          "score": 8.5,
+          "outOf": 10,
+          "rank": 3
+        },
+        {
+          "student": "Carlos de la Cruz",
+          "score": 7.5,
+          "outOf": 10,
+          "rank": 4
+        },
+        {
+          "student": "Diana Fernandez",
+          "score": 7,
+          "outOf": 10,
+          "rank": 5
+        },
+        {
+          "student": "Enzo Gonzales",
+          "score": 7,
+          "outOf": 10,
+          "rank": 5
+        },
+        {
+          "student": "Gian Mercado",
+          "score": 5.5,
+          "outOf": 10,
+          "rank": 7
+        },
+        {
+          "student": "Isabel Tan",
+          "score": 4,
+          "outOf": 10,
+          "rank": 8
+        },
+        {
+          "student": "Hazel Reyes",
+          "score": 3,
+          "outOf": 10,
+          "rank": 9
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-22T14:05:18.240Z",
+  "saved": false,
+  "teacherGradebook": {
+    "quizId": "bf6ac805-1966-4dd6-9fa3-e22e1e221ba3",
+    "score": null,
+    "maxScore": null,
+    "status": "not_started",
+    "pending": false,
+    "scoreAttemptId": null,
+    "gradingAttemptId": null
+  },
+  "studentDashboard": null
+}

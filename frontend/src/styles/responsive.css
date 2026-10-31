@@ -1,0 +1,250 @@
+/* Fit content at its natural size; never conceal page overflow to mask a layout bug. */
+.qn-mobile-nav {
+  display: none;
+}
+.qn-top-nav {
+  overflow: visible;
+  flex-wrap: wrap;
+}
+.qn-page :is(fieldset, .grid > *, .flex > label) {
+  min-width: 0;
+}
+.qn-page :is(input, select, textarea) {
+  max-width: 100%;
+}
+.qn-page p {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1023px) {
+  .qn-responsive-table,
+  .qn-records .qn-responsive-table {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    border: 0;
+  }
+  .qn-responsive-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .qn-responsive-table tbody {
+    display: block;
+  }
+  .qn-responsive-table tbody tr {
+    display: block;
+    border: 0;
+    border-bottom: 1px solid var(--color-slate-200);
+    padding: 16px;
+  }
+  .qn-responsive-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+  .qn-responsive-table tbody :is(td, th), .qn-records .qn-responsive-table tbody :is(td, th) {
+    display: block;
+    position: static;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    border: 0;
+    padding: 8px 0;
+    text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .qn-responsive-table tbody :is(td, th)[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-slate-600);
+    line-height: 1.5;
+    margin-bottom: 5px;
+  }
+  .qn-responsive-table tbody th {
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .qn-responsive-table tbody th .text-xs {
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .qn-responsive-table td > select {
+    width: 100%;
+    max-width: 100%;
+  }
+  .qn-responsive-table tbody td:first-child {
+    padding-top: 0;
+  }
+  .qn-responsive-table .max-w-48 {
+    max-width: 100%;
+    white-space: normal;
+  }
+  .qn-responsive-table [data-label="Student"] > span:first-child {
+    font-size: 17px;
+  }
+}
+@media (max-width: 1023px) {
+  .qn-mobile-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--color-slate-600);
+  }
+  .qn-mobile-nav button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 80px;
+    min-height: 44px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-indigo-700);
+  }
+  .qn-teacher-nav {
+    display: none;
+  }
+  .qn-teacher-nav.qn-top-nav-open {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 16px;
+    padding-bottom: 12px;
+  }
+  .qn-teacher-nav .qn-nav-link {
+    white-space: normal;
+    font-size: 14px;
+    min-width: 0;
+  }
+  .qn-top-nav:not(.qn-teacher-nav) {
+    gap: 20px;
+  }
+  .qn-top-nav:not(.qn-teacher-nav) .qn-nav-link {
+    font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .qn-records .min-w-56,
+  .qn-records .min-w-48 {
+    min-width: 0;
+  }
+  .qn-records .flex > label {
+    flex-basis: 100%;
+  }
+  .qn-page .whitespace-nowrap:not(.qn-badge) {
+    white-space: normal;
+  }
+  .qn-page-reading {
+    overflow-wrap: anywhere;
+  }
+}
+@media print {
+  .qn-mobile-nav {
+    display: none;
+  }
+}
+.qn-briefing :is(button, .qn-button-primary) {
+  min-height: 44px;
+  font-size: 14px;
+}
+.qn-briefing .text-xs {
+  font-size: 13px;
+}
+.qn-taking .text-xs {
+  font-size: 13px;
+}
+.qn-taking .text-sm {
+  font-size: 15px;
+}
+.qn-taking :is(button, summary) {
+  min-height: 44px;
+}
+.qn-taking :is(.grid > *, fieldset, .flex > div) {
+  min-width: 0;
+}
+.qn-taking textarea {
+  width: 100%;
+  max-width: 100%;
+  font-size: 16px;
+}
+.qn-taking > header {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.qn-taking label {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 600px) {
+  .qn-taking > header > div {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .qn-taking > header > div:last-child {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Shared compact records scale; preserve full-size fields and touch targets. */
+@media screen and (min-width: 601px) and (max-width: 1023px) {
+  :is(.qn-gradebook, .qn-class-list, .qn-grading) {
+    --qn-record-detail: 13px;
+    line-height: 1.55;
+  }
+}
+@media (max-width: 600px) {
+  :is(.qn-gradebook, .qn-class-list, .qn-grading) {
+    --qn-record-body: 14px;
+    --qn-record-detail: 12px;
+    --qn-record-heading: 16px;
+    line-height: 1.5;
+  }
+  :is(.qn-gradebook, .qn-class-list, .qn-grading) .qn-title {
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+  :is(.qn-gradebook, .qn-class-list, .qn-grading) :is(.qn-button-primary, .qn-button-secondary, .qn-button-quiet) {
+    font-size: 13px;
+  }
+  :is(.qn-gradebook, .qn-class-list) .qn-responsive-table tbody tr {
+    padding: 12px 14px;
+  }
+  :is(.qn-gradebook, .qn-class-list) .qn-responsive-table tbody :is(td, th) {
+    padding: 6px 0;
+  }
+  :is(.qn-gradebook, .qn-class-list) .qn-responsive-table tbody th {
+    font-size: 15px;
+  }
+  :is(.qn-gradebook, .qn-class-list) .qn-responsive-table tbody th .text-xs {
+    font-size: 12px;
+  }
+  :is(.qn-gradebook, .qn-class-list) .qn-responsive-table tbody [data-label]::before {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 2px;
+  }
+  .qn-gradebook .qn-responsive-table td > span:empty {
+    display: none;
+  }
+  .qn-class-list .qn-responsive-table [data-label="Student"] > span:first-child {
+    font-size: 15px;
+  }
+  .qn-grading .qn-review-summary h3 {
+    font-size: 16px;
+  }
+  .qn-grading .qn-review-summary .text-xl {
+    font-size: 18px;
+  }
+  .qn-grading .qn-grading-layout {
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .qn-grading .qn-grading-layout .p-5 {
+    padding: 16px;
+  }
+}

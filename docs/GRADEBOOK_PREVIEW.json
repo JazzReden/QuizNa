@@ -1,0 +1,239 @@
+{
+  "verifiedAt": "2026-10-20T17:10:25.720Z",
+  "title": "Practical Research: Evidence and Experiments (Sample)",
+  "quizId": "02da9fb0-9ac2-4d29-a3ad-7f8e160fb50b",
+  "existingQuizzesPreserved": 3,
+  "existingRecordsVerified": true,
+  "classes": [
+    {
+      "section": "Grade 12 St. Vincent",
+      "classId": "c1f4c06e-f40b-4e4c-934d-dc64ee33e0e5",
+      "quizSectionId": "2edc6420-df7e-48f7-92af-25e27355c5d3",
+      "accessCode": "S-D16FB57E",
+      "submitted": 10,
+      "notStarted": 4,
+      "quizColumns": 2,
+      "totals": [
+        {
+          "student": "Hannah Castillo",
+          "newScore": 7,
+          "total": 11,
+          "outOf": 22
+        },
+        {
+          "student": "Ben Cruz",
+          "newScore": 6,
+          "total": 15.5,
+          "outOf": 22
+        },
+        {
+          "student": "Gabrielle Flores",
+          "newScore": 12,
+          "total": 17.5,
+          "outOf": 22
+        },
+        {
+          "student": "Ella Garcia",
+          "newScore": 5.5,
+          "total": 13,
+          "outOf": 22
+        },
+        {
+          "student": "Francis Mendoza",
+          "newScore": 6,
+          "total": 14,
+          "outOf": 22
+        },
+        {
+          "student": "Julia Navarro",
+          "newScore": 7.5,
+          "total": 8.5,
+          "outOf": 22
+        },
+        {
+          "student": "Ivan Ramos",
+          "newScore": 8.5,
+          "total": 13,
+          "outOf": 22
+        },
+        {
+          "student": "Ana Reyes",
+          "newScore": 10,
+          "total": 20,
+          "outOf": 22
+        },
+        {
+          "student": "Carla Santos",
+          "newScore": 9,
+          "total": 17,
+          "outOf": 22
+        },
+        {
+          "student": "Daniel Torres",
+          "newScore": 10.5,
+          "total": 17.5,
+          "outOf": 22
+        }
+      ],
+      "analysis": [
+        {
+          "question": "Which sampling method best reduces selection bias in a class survey?",
+          "averagePercent": 40,
+          "commonWrong": [
+            {
+              "answer": "Ask only your closest friends.",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "question": "A correlation between two variables, by itself, proves that one causes the other.",
+          "averagePercent": 70,
+          "commonWrong": [
+            {
+              "answer": "True",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "question": "What do we call the variable that a researcher deliberately changes in an experiment?",
+          "averagePercent": 70,
+          "commonWrong": [
+            {
+              "answer": "dependent variable",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "question": "Plan a simple experiment to test how daily light exposure affects plant growth. Explain what you would change, keep the same, and measure.",
+          "averagePercent": 75,
+          "commonWrong": []
+        },
+        {
+          "question": "Which statement is a testable research hypothesis?",
+          "averagePercent": 80,
+          "commonWrong": [
+            {
+              "answer": "Science is always interesting.",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Grade 12 St. Filomena",
+      "classId": "65fa53dc-04f1-4213-a106-83d329f8e8bf",
+      "quizSectionId": "1118b14d-17e5-47d6-a6c5-ca83d101aa1c",
+      "accessCode": "S-CB4BCCA8",
+      "submitted": 9,
+      "notStarted": 4,
+      "quizColumns": 2,
+      "totals": [
+        {
+          "student": "Adrian Aquino",
+          "newScore": 8,
+          "total": 17.5,
+          "outOf": 22
+        },
+        {
+          "student": "Bea Bautista",
+          "newScore": 7,
+          "total": 17,
+          "outOf": 22
+        },
+        {
+          "student": "Carlos de la Cruz",
+          "newScore": 10.5,
+          "total": 18,
+          "outOf": 22
+        },
+        {
+          "student": "Diana Fernandez",
+          "newScore": 5.5,
+          "total": 12.5,
+          "outOf": 22
+        },
+        {
+          "student": "Enzo Gonzales",
+          "newScore": 8,
+          "total": 15,
+          "outOf": 22
+        },
+        {
+          "student": "Faye Lim",
+          "newScore": 10,
+          "total": 18.5,
+          "outOf": 22
+        },
+        {
+          "student": "Gian Mercado",
+          "newScore": 7,
+          "total": 12.5,
+          "outOf": 22
+        },
+        {
+          "student": "Hazel Reyes",
+          "newScore": 8.5,
+          "total": 11.5,
+          "outOf": 22
+        },
+        {
+          "student": "Isabel Tan",
+          "newScore": 9.5,
+          "total": 13.5,
+          "outOf": 22
+        }
+      ],
+      "analysis": [
+        {
+          "question": "Which sampling method best reduces selection bias in a class survey?",
+          "averagePercent": 33.3,
+          "commonWrong": [
+            {
+              "answer": "Ask only your closest friends.",
+              "count": 6
+            }
+          ]
+        },
+        {
+          "question": "What do we call the variable that a researcher deliberately changes in an experiment?",
+          "averagePercent": 66.7,
+          "commonWrong": [
+            {
+              "answer": "dependent variable",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "question": "Plan a simple experiment to test how daily light exposure affects plant growth. Explain what you would change, keep the same, and measure.",
+          "averagePercent": 72.2,
+          "commonWrong": []
+        },
+        {
+          "question": "A correlation between two variables, by itself, proves that one causes the other.",
+          "averagePercent": 77.8,
+          "commonWrong": [
+            {
+              "answer": "True",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "question": "Which statement is a testable research hypothesis?",
+          "averagePercent": 88.9,
+          "commonWrong": [
+            {
+              "answer": "Science is always interesting.",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

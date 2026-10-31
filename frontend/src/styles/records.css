@@ -1,0 +1,425 @@
+/* Comfortable desktop reading with a restrained scale on tablets and phones. */
+.qn-records {
+  --qn-record-body: 16px;
+  --qn-record-detail: 14px;
+  --qn-record-heading: 18px;
+  font-size: var(--qn-record-body);
+  line-height: 1.65;
+}
+.qn-records .qn-title {
+  font-size: clamp(28px, 2.6vw, 34px);
+}
+.qn-records .qn-description {
+  font-size: var(--qn-record-body);
+  max-width: 52ch;
+}
+.qn-records .text-sm {
+  font-size: var(--qn-record-body);
+}
+.qn-records :is(.text-xs, [class~="text-[10px]"], [class~="text-[11px]"]) {
+  font-size: var(--qn-record-detail);
+  line-height: 1.6;
+}
+.qn-records
+  :is(
+    .qn-button-primary,
+    .qn-button-secondary,
+    .qn-button-quiet,
+    .qn-button-danger
+  ) {
+  font-size: 15px;
+  min-height: 44px;
+  white-space: normal;
+}
+.qn-records .qn-icon-button {
+  width: 44px;
+  height: 44px;
+}
+.qn-records button {
+  min-height: 44px;
+}
+.qn-records
+  :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+  font-size: 16px;
+  min-height: 44px;
+  max-width: 100%;
+}
+.qn-records summary {
+  font-size: var(--qn-record-detail);
+  min-height: 44px;
+  padding-block: 10px;
+}
+.qn-records .qn-quiet-details {
+  font-size: var(--qn-record-detail);
+}
+.qn-records .qn-table {
+  font-size: var(--qn-record-body);
+  min-width: 680px;
+  line-height: 1.55;
+}
+.qn-records .qn-table thead th {
+  font-size: var(--qn-record-detail);
+  padding: 18px 16px;
+}
+.qn-records .qn-table :is(td, tbody th) {
+  padding: 18px 16px;
+}
+.qn-records .qn-table a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.qn-records .qn-table .qn-score-link {
+  font-size: var(--qn-record-body);
+  min-height: 44px;
+}
+.qn-gradebook .qn-student-column {
+  width: 224px;
+  min-width: 224px;
+  max-width: 224px;
+  overflow-wrap: anywhere;
+  z-index: 2;
+}
+.qn-gradebook thead .qn-student-column {
+  z-index: 3;
+}
+.qn-gradebook .qn-student-column > span {
+  max-width: 100%;
+}
+.qn-grading-layout > * {
+  min-width: 0;
+}
+.qn-grading .qn-submissions-list {
+  max-height: min(70vh, 900px);
+  overflow-y: auto;
+  padding: 3px;
+  scrollbar-gutter: stable;
+  border-radius: 10px;
+}
+.qn-grading .qn-submissions-list button > div {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.qn-grading .qn-submissions-list button p {
+  font-size: var(--qn-record-body);
+  overflow-wrap: anywhere;
+}
+.qn-grading .qn-review-summary {
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+.qn-grading .qn-review-summary h3 {
+  font-size: var(--qn-record-heading);
+}
+.qn-grading p {
+  overflow-wrap: anywhere;
+}
+.qn-grading .qn-grade-fields {
+  display: grid;
+  align-items: end;
+  grid-template-columns: minmax(0, 110px) minmax(0, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 440px;
+}
+.qn-grading .qn-grade-fields > * {
+  min-width: 0;
+  margin-left: 0;
+  width: auto;
+}
+.qn-grading .qn-grade-fields input {
+  width: 100%;
+}
+.qn-grading .qn-grade-controls {
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.qn-grading .qn-grade-controls > button {
+  font-size: var(--qn-record-detail);
+  padding: 11px 16px;
+}
+.qn-grading [role="region"],
+.qn-records [role="region"] {
+  max-width: 100%;
+}
+@media (max-width: 1023px) {
+  .qn-records {
+    --qn-record-body: 15px;
+    --qn-record-detail: 14px;
+    --qn-record-heading: 17px;
+  }
+  .qn-records .qn-table :is(td, th) {
+    padding: 16px 14px;
+  }
+  .qn-grading .qn-submissions-list {
+    max-height: 280px;
+  }
+  .qn-gradebook .qn-student-column {
+    width: 180px;
+    min-width: 180px;
+    max-width: 180px;
+  }
+}
+@media (max-width: 600px) {
+  .qn-records {
+    --qn-record-detail: 13px;
+  }
+  .qn-records .qn-title {
+    font-size: 28px;
+    letter-spacing: -0.8px;
+  }
+  .qn-records .qn-heading-actions {
+    width: 100%;
+    gap: 8px;
+    flex-shrink: 1;
+  }
+  .qn-records
+    :is(
+      .qn-button-primary,
+      .qn-button-secondary,
+      .qn-button-quiet,
+      .qn-button-danger
+    ) {
+    font-size: 14px;
+  }
+  .qn-records .qn-table :is(td, th) {
+    padding: 14px 12px;
+  }
+  .qn-gradebook .qn-student-column {
+    width: 156px;
+    min-width: 156px;
+    max-width: 156px;
+  }
+  .qn-grading .qn-submissions-list {
+    max-height: 250px;
+  }
+  .qn-grading .qn-grade-fields {
+    grid-template-columns: minmax(0, 100px) minmax(0, 1fr);
+    gap: 12px;
+    max-width: none;
+  }
+  .qn-grading .qn-grade-controls > button {
+    width: 100%;
+  }
+  .qn-grading .qn-review-summary {
+    gap: 14px;
+  }
+  .qn-grading > .flex > label {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+  .qn-grading > .flex > label :is(input, select) {
+    width: 100%;
+  }
+  .qn-grading > div:first-child > div:first-child {
+    min-width: 0;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .qn-grading > div:first-child > div:first-child > div {
+    min-width: 0;
+    margin-left: 0;
+  }
+  .qn-grading > div:first-child > div:first-child > a {
+    flex-shrink: 0;
+    min-height: 44px;
+    flex-wrap: wrap;
+  }
+}
+.qn-records .qn-table a.block {
+  display: flex;
+}
+
+/* Predictable return controls: visible label, outline, keyboard focus and 44px target. */
+.qn-return-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 11px 16px;
+  border: 1px solid var(--qn-border);
+  border-radius: 11px;
+  background: var(--qn-surface);
+  color: var(--qn-accent-text);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: left;
+}
+.qn-return-button svg {
+  flex-shrink: 0;
+}
+.qn-return-button:hover {
+  background: var(--qn-soft);
+  border-color: var(--qn-accent);
+}
+.qn-return-button:focus-visible {
+  outline: 2px solid var(--qn-accent);
+  outline-offset: 3px;
+}
+.qn-review-navigation {
+  margin-bottom: 22px;
+}
+.qn-review-page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--qn-border);
+}
+.qn-review-page-heading > div {
+  min-width: 0;
+}
+.qn-review-page-heading .qn-description {
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+}
+.qn-review-answer-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--qn-border);
+  border-radius: 10px;
+  color: var(--qn-accent-text);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.qn-review-answer-link:hover {
+  background: var(--qn-soft);
+}
+@media (max-width: 640px) {
+  .qn-return-button {
+    font-size: 14px;
+  }
+  .qn-review-page-heading {
+    gap: 16px;
+  }
+  .qn-review-page-heading > div:last-child {
+    gap: 8px;
+  }
+}
+
+/* Individual answer review keeps heading, summary and question cards on one axis. */
+.qn-page.qn-single-review {
+  width: 100%;
+  max-width: 1040px;
+  margin-inline: auto;
+}
+.qn-single-review-layout {
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+}
+.qn-single-review .qn-review-summary {
+  gap: 20px;
+}
+.qn-single-review .qn-review-summary h3 {
+  font-size: 19px;
+  line-height: 1.4;
+}
+.qn-single-review .qn-review-summary p {
+  margin-top: 6px;
+}
+@media (max-width: 640px) {
+  .qn-single-review .qn-review-summary h3 {
+    font-size: 17px;
+  }
+  .qn-single-review .qn-review-summary {
+    gap: 14px;
+  }
+}
+
+/* Keep the gradebook as a spreadsheet on every viewport; only the sheet scrolls. */
+.qn-gradebook-sheet {
+  max-width: 100%;
+  max-height: 72vh;
+  isolation: isolate;
+}
+.qn-gradebook .qn-gradebook-grid {
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 680px;
+  width: 100%;
+}
+.qn-gradebook-grid thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--qn-soft);
+  text-align: center;
+  vertical-align: middle;
+}
+.qn-gradebook-grid thead th:first-child {
+  z-index: 3;
+  text-align: left;
+}
+.qn-gradebook-grid :is(td, th) {
+  border-right: 1px solid var(--qn-border);
+  border-bottom: 1px solid var(--qn-border);
+}
+.qn-gradebook-grid :is(td, th):last-child {
+  border-right: 0;
+}
+.qn-gradebook .qn-gradebook-grid :is(td, tbody th) {
+  padding: 10px 14px;
+}
+.qn-gradebook-grid td {
+  text-align: center;
+  vertical-align: middle;
+  font-variant-numeric: tabular-nums;
+}
+.qn-gradebook-grid tbody th {
+  z-index: 1;
+  background: var(--qn-surface);
+  vertical-align: middle;
+}
+.qn-gradebook-grid tbody tr:hover :is(td, th) {
+  background: var(--qn-soft);
+}
+.qn-gradebook-grid thead th:not(:first-child) {
+  min-width: 150px;
+  max-width: 210px;
+}
+.qn-gradebook-grid thead th a {
+  justify-content: center;
+  overflow-wrap: anywhere;
+}
+.qn-gradebook .qn-gradebook-grid .qn-student-column {
+  min-width: 190px;
+  width: 190px;
+  max-width: 190px;
+}
+.qn-gradebook-grid td a {
+  justify-content: center;
+  margin-inline: auto;
+}
+.qn-gradebook-grid td:last-child {
+  background: var(--qn-soft);
+}
+@media (max-width: 640px) {
+  .qn-gradebook .qn-gradebook-grid {
+    font-size: 14px;
+  }
+  .qn-gradebook .qn-gradebook-grid .qn-student-column {
+    min-width: 145px;
+    width: 145px;
+    max-width: 145px;
+  }
+  .qn-gradebook .qn-gradebook-grid :is(td, tbody th) {
+    padding: 10px;
+  }
+  .qn-gradebook-grid thead th:not(:first-child) {
+    min-width: 140px;
+  }
+}
+.qn-score-confirmation { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; border:1px solid var(--qn-border); border-radius:14px; background:var(--qn-soft); padding:18px; }
+.qn-score-confirmation strong { color:var(--qn-ink); font-size:16px; }
+.qn-score-confirmation p { color:var(--qn-muted); margin:4px 0 0; font-size:14px; }

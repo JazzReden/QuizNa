@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-23T15:40:51.977Z",
+  "provider": "gemini",
+  "keyConfigured": false,
+  "liveHandwritingTested": false,
+  "allExistingRecordsUnchanged": true,
+  "attempts": 46,
+  "answers": 298,
+  "backendTests": 176,
+  "frontendTests": 49,
+  "paperChecks": 43
+}

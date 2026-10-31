@@ -1,0 +1,28 @@
+{
+  "teacherEmail": "demo.teacher.e9d067@quizna.test",
+  "title": "Environmental Science — Paper Practice (Sample)",
+  "quizId": "bf6ac805-1966-4dd6-9fa3-e22e1e221ba3",
+  "section": "Grade 12 St. Vincent",
+  "student": "Ana Reyes",
+  "studentEmail": "sample.vincent.01.d42927da@quizna.test",
+  "sheetId": "2b104406-f308-4ae3-8427-676fb8b27ad4",
+  "pages": 1,
+  "maximumScore": 10,
+  "saved": true,
+  "url": "http://127.0.0.1:5173/teacher/paper/bf6ac805-1966-4dd6-9fa3-e22e1e221ba3",
+  "practiceKey": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "A",
+    "B",
+    "C",
+    "D",
+    "True",
+    "False"
+  ],
+  "preservedExistingQuizzes": 4,
+  "verifiedAt": "2026-10-21T15:38:23.384Z",
+  "sectionSheetsReady": 13
+}

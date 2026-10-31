@@ -1,0 +1,22 @@
+{
+  "quizId": "c4c5b1fe-2405-4875-8d48-60f93b9c589b",
+  "sheetId": "2c8a6328-a284-42d7-a32d-468a38ba17db",
+  "student": "Carla Santos",
+  "section": "Grade 12 St. Vincent",
+  "multipleChoice": 40,
+  "trueFalse": 15,
+  "essays": 5,
+  "objectivePoints": 55,
+  "essayPoints": 25,
+  "totalPoints": 80,
+  "answerPages": 5,
+  "saved": false,
+  "questionPages": 7,
+  "all60PromptsVerified": true,
+  "finalPdfQrPagesVerified": 5,
+  "objectiveScoreVerified": 55,
+  "essayCountVerified": 5,
+  "allQuestionIdsCovered": true,
+  "existingScoreRecordsPreserved": 45,
+  "physicalCameraTested": false
+}

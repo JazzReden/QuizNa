@@ -1,0 +1,63 @@
+{
+  "name": "quizna-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "QuizNa - Online Quiz Application with Live Monitoring and Grading",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "deploy:check": "node scripts/production-config.mjs",
+    "audit:source": "node scripts/audit-source.mjs",
+    "deploy:database": "node scripts/prepare-supabase.mjs",
+    "test:deployment": "node --test scripts/test-deployment.mjs",
+    "build:production:frontend": "node scripts/production-config.mjs frontend && npm --workspace=frontend run build",
+    "dev": "node scripts/dev.mjs",
+    "start:backend": "npm --workspace=backend run start:dev",
+    "start:frontend": "npm --workspace=frontend run dev",
+    "build": "npm --workspace=backend run build && npm --workspace=frontend run build",
+    "test": "npm --workspace=backend test",
+    "test:frontend": "npm --workspace=frontend test",
+    "test:cov": "npm --workspace=backend run test:cov",
+    "test:database": "node scripts/test-database.mjs",
+    "test:smoke": "node scripts/smoke-api.mjs",
+    "test:mysql": "node scripts/test-mysql-persistence.mjs",
+    "test:local-auth": "node scripts/test-local-auth.mjs",
+    "test:full-flow": "node scripts/test-full-flow.mjs",
+    "test:question-import": "node scripts/test-question-import.mjs",
+    "test:sections": "node scripts/test-sections.mjs",
+    "test:client-boundary": "node scripts/test-client-boundary.mjs",
+    "test:paper": "node scripts/test-paper.mjs",
+    "phone:link": "node scripts/phone-link.mjs",
+    "test:gemini-live": "node scripts/test-gemini-live.mjs",
+    "test:security": "npm --workspace=backend run build && node scripts/test-backend-security.mjs",
+    "check": "tsc -p frontend/tsconfig.json --noEmit && tsc -p backend/tsconfig.json --noEmit --incremental false",
+    "qa": "node scripts/qa.mjs",
+    "qa:mysql": "node scripts/qa.mjs --mysql"
+  },
+  "keywords": [
+    "quiz",
+    "exam",
+    "anti-cheat",
+    "proctoring",
+    "react",
+    "nestjs",
+    "supabase"
+  ],
+  "author": "QuizNa Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.10"
+  },
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "overrides": {
+    "multer": "$multer"
+  },
+  "dependencies": {
+    "@nestjs/platform-express": "^11.2.7",
+    "multer": "2.5.0"
+  }
+}

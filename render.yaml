@@ -1,0 +1,32 @@
+# Backend only. The frontend is deployed separately with vercel.json.
+# Starter is a paid plan; choose the plan explicitly in Render before creating it.
+services:
+  - type: web
+    name: quizna-api
+    runtime: node
+    plan: starter
+    buildCommand: npm ci --include=dev && npm --workspace=backend run build && npm prune --omit=dev
+    startCommand: npm run deploy:check -- backend && npm --workspace=backend run start:prod
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_MODE
+        value: supabase
+      - key: DEMO_MODE
+        value: "false"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: PAPER_AI_ENABLED
+        value: "false"
+      # Render terminates requests at its reverse proxy; recheck hop count if adding another proxy.
+      - key: TRUST_PROXY_HOPS
+        value: "1"
+      - key: FRONTEND_URL
+        sync: false

@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-27T11:13:21.836Z",
+  "sections": [
+    {
+      "section": "Grade 12 St. Filomena",
+      "students": 13,
+      "alphabeticalByLastName": true,
+      "noDuplicateEmails": true
+    },
+    {
+      "section": "Grade 12 St. Vincent",
+      "students": 14,
+      "alphabeticalByLastName": true,
+      "noDuplicateEmails": true
+    }
+  ],
+  "anonymousDenied": true,
+  "studentDenied": true,
+  "foreignOwnerDenied": true,
+  "scoresUnchanged": true
+}

@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "verifiedAt": "2026-10-30T09:50:26.738Z",
+  "checks": 16,
+  "scenarios": [
+    "Student role and unrelated teacher cannot import questions",
+    "Invalid answer key rejects the entire batch without partial saves",
+    "Over-precise points are rejected instead of rounded silently",
+    "Concurrent imports create one batch with the same question IDs",
+    "MariaDB preserves decimal points, choices and question order",
+    "Retry after backend restart does not duplicate questions",
+    "Changed replay cannot overwrite an earlier import",
+    "Imported questions publish and reach students without private keys",
+    "Imported objective points and typed decimal essay grade reach student results",
+    "A full 100-question quiz saves in one batch",
+    "Oversized batches are rejected without changing the quiz",
+    "Oversized request bodies return a safe error without partial writes",
+    "Mixed question types and explicit essay points persist in XAMPP",
+    "Mixed imports remain safe to retry",
+    "Pasted true/false grades automatically while the essay awaits review",
+    "Mixed imported questions complete submission, manual grading and released results"
+  ]
+}

@@ -1,0 +1,336 @@
+{
+  "checkedAt": "2026-10-24T04:50:35.634Z",
+  "checks": 54,
+  "overflowFailures": [],
+  "smallButtonFindings": [],
+  "limitations": [
+    "Read-only local sample accounts; no real quiz started or submitted.",
+    "Live camera capture and physical printing were not exercised; camera and print layout code was preserved."
+  ],
+  "results": [
+    {
+      "page": "welcome-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "login-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "signup-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "teacher-guide-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "student-guide-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "teacher-dashboard-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "quiz-create-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "quiz-edit-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "sections-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "class-list-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "gradebook-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "leaderboard-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "analysis-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "monitor-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "grading-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "paper-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "student-dashboard-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "performance-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "student-result-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "quiz-briefing-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "quiz-access-error-phone",
+      "contentWidth": 390,
+      "smallButtons": [],
+      "width": 390
+    },
+    {
+      "page": "welcome-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "login-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "signup-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "teacher-guide-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "student-guide-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "teacher-dashboard-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "quiz-create-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "quiz-edit-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "sections-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "class-list-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "gradebook-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "leaderboard-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "analysis-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "monitor-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "grading-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "paper-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "student-dashboard-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "performance-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "student-result-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "quiz-briefing-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "quiz-access-error-tablet",
+      "contentWidth": 768,
+      "smallButtons": [],
+      "width": 768
+    },
+    {
+      "page": "login-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "page": "signup-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "page": "quiz-edit-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "page": "gradebook-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "page": "paper-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "page": "performance-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "page": "section-roster-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "page": "section-codes-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "page": "question-dialog-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "page": "paste-dialog-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "page": "essay-rubric-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    },
+    {
+      "page": "teacher-menu-small-phone",
+      "contentWidth": 320,
+      "smallButtons": [],
+      "width": 320
+    }
+  ]
+}

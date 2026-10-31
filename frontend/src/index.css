@@ -1,0 +1,216 @@
+@import "tailwindcss";
+@import "./styles/workspace.css";
+@import "./styles/dashboard.css";
+@import "./styles/records.css";
+@import "./styles/authoring.css";
+@import "./styles/subjects.css";
+@import "./styles/responsive.css";
+@import "./styles/student.css";
+@import "./styles/theme.css";
+
+/* QuizNa: ink, warm paper and muted campus teal. Semantic utility tokens
+   preserve existing components while keeping one app-wide palette. */
+@theme {
+  --color-indigo-50: #eef8f0;
+  --color-indigo-100: #d9efdf;
+  --color-indigo-200: #b9ddc5;
+  --color-indigo-300: #91c7a5;
+  --color-indigo-400: #68ac86;
+  --color-indigo-500: #4c9470;
+  --color-indigo-600: #357f5f;
+  --color-indigo-700: #2e7355;
+  --color-indigo-800: #286449;
+  --color-indigo-900: #21533e;
+  --color-indigo-950: #153b2c;
+  --color-violet-500: #4c9470;
+  --color-violet-600: #357f5f;
+  --color-purple-500: #4c9470;
+  --color-purple-600: #357f5f;
+  --color-slate-50: #f5f9f6;
+  --color-slate-100: #eef5ef;
+  --color-slate-200: #dce8df;
+  --color-slate-300: #bdcbc3;
+  --color-slate-400: #68786e;
+  --color-slate-500: #5f6e66;
+  --color-slate-600: #4d5d50;
+  --color-slate-700: #394a3d;
+  --color-slate-800: #293a30;
+  --color-slate-900: #192c23;
+  --color-slate-950: #0d1b14;
+}
+
+:root {
+  font-family:
+    "Plus Jakarta Sans",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    sans-serif;
+}
+
+code,
+pre,
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Keep normal page scrolling without a visible browser-edge scroll track.
+   Nested tables, text fields and dialogs retain their own scroll controls. */
+html {
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Phone scanner: safe-area controls, full uncropped feed, no page scrolling. */
+.paper-camera {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #020617;
+  color: white;
+  outline: none;
+}
+.paper-camera-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: max(16px, env(safe-area-inset-top)) 20px 12px;
+}
+.paper-camera-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+}
+.paper-camera-guide {
+  position: relative;
+  pointer-events: none;
+  width: min(78vw, calc((100dvh - 280px) * 0.62), 420px);
+  aspect-ratio: 1 / 1.414;
+  border: 1px solid rgb(255 255 255 / 0.25);
+  border-radius: 12px;
+}
+.paper-camera-corner {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-color: #afd9cc;
+  border-style: solid;
+  border-width: 0;
+}
+.paper-camera-corner.top-left {
+  top: -2px;
+  left: -2px;
+  border-top-width: 4px;
+  border-left-width: 4px;
+  border-top-left-radius: 12px;
+}
+.paper-camera-corner.top-right {
+  top: -2px;
+  right: -2px;
+  border-top-width: 4px;
+  border-right-width: 4px;
+  border-top-right-radius: 12px;
+}
+.paper-camera-corner.bottom-left {
+  bottom: -2px;
+  left: -2px;
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+  border-bottom-left-radius: 12px;
+}
+.paper-camera-corner.bottom-right {
+  bottom: -2px;
+  right: -2px;
+  border-bottom-width: 4px;
+  border-right-width: 4px;
+  border-bottom-right-radius: 12px;
+}
+.paper-camera-footer {
+  width: 100%;
+  max-width: 540px;
+  margin-inline: auto;
+  padding: 16px 20px max(16px, env(safe-area-inset-bottom));
+}
+.paper-camera-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #1e293b;
+}
+.paper-camera-shutter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  width: 76px;
+  height: 76px;
+  border: 5px solid #afd9cc;
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+  border-radius: 50%;
+  background: white;
+  color: #145b4e;
+}
+.paper-camera button:disabled {
+  opacity: 0.45;
+}
+.paper-camera button:focus-visible,
+.paper-camera label:focus-within {
+  outline: 3px solid #afd9cc;
+  outline-offset: 5px;
+}
+@media (max-height: 480px) and (orientation: landscape) {
+  .paper-camera-header {
+    padding-block: 6px;
+  }
+  .paper-camera-footer {
+    padding-block: 8px;
+  }
+  .paper-camera-footer > p {
+    display: none;
+  }
+  .paper-camera-shutter {
+    width: 48px;
+    height: 48px;
+  }
+  .paper-camera-guide {
+    width: min(35vw, calc((100dvh - 155px) * 0.62));
+  }
+}

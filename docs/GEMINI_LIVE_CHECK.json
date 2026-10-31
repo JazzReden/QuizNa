@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-10-23T15:58:51.253Z",
+  "passed": true,
+  "fixture": "AI-generated handwriting; fictional self-awareness response",
+  "confirmedOrSavedGrade": false,
+  "elapsedMs": 8561,
+  "model": "gemini-3.1-flash-lite",
+  "transcription": "Self-awareness helps me understand my strengths and weaknesses. When I feel nervous about college, I can pause, breathe slowly, and plan what to do next. Emotional regulation helps me stay calm during an interview and respond respectfully.",
+  "exactNormalizedTranscription": true,
+  "legibility": "clear",
+  "suggestedScore": 5,
+  "maximum": 5,
+  "criteria": [
+    {
+      "index": 0,
+      "name": "Accuracy",
+      "points": 2,
+      "level": "Excellent",
+      "score": 2
+    },
+    {
+      "index": 1,
+      "name": "Completeness",
+      "points": 2,
+      "level": "Excellent",
+      "score": 2
+    },
+    {
+      "index": 2,
+      "name": "Clarity",
+      "points": 1,
+      "level": "Excellent",
+      "score": 1
+    }
+  ],
+  "feedback": "You clearly defined both concepts and provided excellent, concrete examples for both college and employment contexts.",
+  "teacherReviewRequired": true,
+  "attemptCreated": false,
+  "existingRecordsUnchanged": true,
+  "existingAttempts": 46,
+  "existingAnswers": 298,
+  "unchangedSinceBeforeRestart": true
+}

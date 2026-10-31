@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-31T13:27:02.566Z",
+  "repositoryInitialized": false,
+  "readOnly": true,
+  "pushPerformed": false,
+  "candidateFiles": 504,
+  "textFilesScanned": 462,
+  "ignoreCasesChecked": 22,
+  "findings": [],
+  "limitations": "Pattern and known-local-credential scanning cannot detect every possible secret; review staged changes before committing."
+}

@@ -1,0 +1,49 @@
+{
+  "environment": "Local Node image processing; not a physical phone camera test",
+  "reports": [
+    {
+      "file": "answered.png",
+      "qrIdentified": true,
+      "correctObjectiveAnswers": 40,
+      "decodeMs": 165,
+      "marksMs": 26,
+      "marked": 40,
+      "uncertain": 0,
+      "written": 4,
+      "secondQrDecodeSkipped": true
+    },
+    {
+      "file": "photo-clear.jpg",
+      "qrIdentified": true,
+      "correctObjectiveAnswers": 40,
+      "decodeMs": 183,
+      "marksMs": 32,
+      "marked": 40,
+      "uncertain": 0,
+      "written": 4,
+      "secondQrDecodeSkipped": true
+    },
+    {
+      "file": "photo-perspective.jpg",
+      "qrIdentified": true,
+      "correctObjectiveAnswers": 40,
+      "decodeMs": 160,
+      "marksMs": 14,
+      "marked": 40,
+      "uncertain": 0,
+      "written": 4,
+      "secondQrDecodeSkipped": true
+    },
+    {
+      "file": "photo-dim.jpg",
+      "qrIdentified": true,
+      "correctObjectiveAnswers": 40,
+      "decodeMs": 157,
+      "marksMs": 26,
+      "marked": 40,
+      "uncertain": 0,
+      "written": 4,
+      "secondQrDecodeSkipped": true
+    }
+  ]
+}

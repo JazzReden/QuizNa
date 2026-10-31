@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-10-23T14:55:16.899Z",
+  "student": "Ella Garcia",
+  "quizId": "c4c5b1fe-2405-4875-8d48-60f93b9c589b",
+  "sheetId": "996cf05d-f5c0-4594-ba6b-0f03de24baa7",
+  "attemptId": "38537299-7c75-4990-93ce-c1712ccb32c7",
+  "source": "Prepared answered PDF scan; phone scan had not saved",
+  "objectiveScore": "55/55",
+  "essays": [
+    {
+      "question": 56,
+      "accuracy": 2,
+      "completeness": 2,
+      "clarity": 1,
+      "score": 5,
+      "maximum": 5
+    },
+    {
+      "question": 57,
+      "accuracy": 2,
+      "completeness": 2,
+      "clarity": 1,
+      "score": 5,
+      "maximum": 5
+    },
+    {
+      "question": 58,
+      "accuracy": 2,
+      "completeness": 2,
+      "clarity": 1,
+      "score": 5,
+      "maximum": 5
+    },
+    {
+      "question": 59,
+      "accuracy": 2,
+      "completeness": 2,
+      "clarity": 1,
+      "score": 5,
+      "maximum": 5
+    },
+    {
+      "question": 60,
+      "accuracy": 2,
+      "completeness": 2,
+      "clarity": 1,
+      "score": 5,
+      "maximum": 5
+    }
+  ],
+  "essayTotal": "25/25",
+  "finalScore": "80/80",
+  "teacherGradebook": "80/80",
+  "studentDashboard": "80/80",
+  "fullyGraded": true,
+  "existingScoresPreserved": 45,
+  "existingAnswersPreserved": 238,
+  "oneAttemptPerSheet": true,
+  "physicalCameraTested": false
+}

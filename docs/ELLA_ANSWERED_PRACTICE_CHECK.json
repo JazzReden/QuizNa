@@ -1,0 +1,20 @@
+{
+  "student": "Ella Garcia",
+  "studentEmail": "sample.vincent.05.d42927da@quizna.test",
+  "quizId": "c4c5b1fe-2405-4875-8d48-60f93b9c589b",
+  "sheetId": "996cf05d-f5c0-4594-ba6b-0f03de24baa7",
+  "qrVerified": true,
+  "answerPages": 1,
+  "paperInches": "8.5 x 13",
+  "objectiveScore": 55,
+  "objectiveMaximum": 55,
+  "essaysForManualGrading": 5,
+  "essayMaximum": 25,
+  "maximumTotal": 80,
+  "saved": true,
+  "existingScoresPreserved": 45,
+  "physicalCameraTested": false,
+  "phoneUrl": "https://guidance-unique-partially-detailed.trycloudflare.com/teacher/paper/c4c5b1fe-2405-4875-8d48-60f93b9c589b?sheet=996cf05d-f5c0-4594-ba6b-0f03de24baa7",
+  "httpsSheetVerified": true,
+  "attemptId": "38537299-7c75-4990-93ce-c1712ccb32c7"
+}
