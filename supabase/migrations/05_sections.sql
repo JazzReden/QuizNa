@@ -1,6 +1,6 @@
 BEGIN;
 CREATE TABLE IF NOT EXISTS public.quiz_sections (
- id uuid PRIMARY KEY DEFAULT public.uuid_generate_v4(),
+ id uuid PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(),
  quiz_id uuid NOT NULL REFERENCES public.quizzes(id) ON DELETE CASCADE,
  name varchar(80) NOT NULL CHECK(length(btrim(name))>0),
  access_code varchar(12) NOT NULL UNIQUE CHECK(access_code ~ '^S-[A-F0-9]{8}$'),

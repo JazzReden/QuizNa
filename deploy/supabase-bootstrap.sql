@@ -11,8 +11,7 @@ END $$;
 -- QuizNa Database Schema Migration 01: Core Tables, Constraints, and Indexes
 -- ==============================================================================
 
--- Enable UUID extension if not already enabled
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+-- UUIDv4 uses PostgreSQL 13+ core; no extension schema is required.
 
 -- 1. Profiles Table (linked with Supabase Auth users)
 CREATE TABLE IF NOT EXISTS public.profiles (
@@ -30,7 +29,7 @@ CREATE INDEX IF NOT EXISTS idx_profiles_role ON public.profiles(role);
 
 -- 2. Quizzes Table
 CREATE TABLE IF NOT EXISTS public.quizzes (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(),
     teacher_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     description TEXT,
@@ -57,7 +56,7 @@ CREATE INDEX IF NOT EXISTS idx_quizzes_status ON public.quizzes(status);
 
 -- 3. Quiz Versions Table (Freezes quiz structure when attempts are created)
 CREATE TABLE IF NOT EXISTS public.quiz_versions (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(),
     quiz_id UUID NOT NULL REFERENCES public.quizzes(id) ON DELETE CASCADE,
     version_number INT NOT NULL,
     snapshot_data JSONB NOT NULL,
@@ -69,7 +68,7 @@ CREATE INDEX IF NOT EXISTS idx_quiz_versions_quiz ON public.quiz_versions(quiz_i
 
 -- 4. Questions Table
 CREATE TABLE IF NOT EXISTS public.questions (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(),
     quiz_id UUID NOT NULL REFERENCES public.quizzes(id) ON DELETE CASCADE,
     type TEXT NOT NULL CHECK (type IN ('mcq', 'true_false', 'short_answer', 'essay')),
     prompt TEXT NOT NULL,
@@ -87,7 +86,7 @@ CREATE INDEX IF NOT EXISTS idx_questions_quiz ON public.questions(quiz_id, order
 
 -- 5. Quiz Attempts Table
 CREATE TABLE IF NOT EXISTS public.quiz_attempts (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(),
     quiz_id UUID NOT NULL REFERENCES public.quizzes(id) ON DELETE CASCADE,
     quiz_version_id UUID REFERENCES public.quiz_versions(id) ON DELETE SET NULL,
     student_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
@@ -112,7 +111,7 @@ CREATE INDEX IF NOT EXISTS idx_attempts_deadline ON public.quiz_attempts(deadlin
 
 -- 6. Attempt Answers Table
 CREATE TABLE IF NOT EXISTS public.attempt_answers (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(),
     attempt_id UUID NOT NULL REFERENCES public.quiz_attempts(id) ON DELETE CASCADE,
     question_id UUID NOT NULL REFERENCES public.questions(id) ON DELETE CASCADE,
     answer JSONB, -- Value student provided
@@ -127,7 +126,7 @@ CREATE INDEX IF NOT EXISTS idx_answers_attempt ON public.attempt_answers(attempt
 
 -- 7. Quiz Incidents Table (Monitoring telemetry)
 CREATE TABLE IF NOT EXISTS public.quiz_incidents (
-    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id UUID PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(),
     attempt_id UUID NOT NULL REFERENCES public.quiz_attempts(id) ON DELETE CASCADE,
     incident_type TEXT NOT NULL CHECK (incident_type IN ('tab_hidden', 'window_blur', 'fullscreen_exit')),
     occurred_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now()),
@@ -604,7 +603,7 @@ END $$;
 -- SOURCE: 05_sections.sql
 
 CREATE TABLE IF NOT EXISTS public.quiz_sections (
- id uuid PRIMARY KEY DEFAULT public.uuid_generate_v4(),
+ id uuid PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(),
  quiz_id uuid NOT NULL REFERENCES public.quizzes(id) ON DELETE CASCADE,
  name varchar(80) NOT NULL CHECK(length(btrim(name))>0),
  access_code varchar(12) NOT NULL UNIQUE CHECK(access_code ~ '^S-[A-F0-9]{8}$'),
@@ -748,12 +747,12 @@ GRANT EXECUTE ON FUNCTION public.quizna_attempt_command(text,uuid,jsonb) TO serv
 -- SOURCE: 06_reusable_sections.sql
 
 CREATE TABLE public.class_sections (
- id uuid PRIMARY KEY DEFAULT public.uuid_generate_v4(), teacher_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+ id uuid PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(), teacher_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
  name varchar(80) NOT NULL CHECK(length(btrim(name)) BETWEEN 1 AND 80), created_at timestamptz NOT NULL DEFAULT now()
 );
 CREATE UNIQUE INDEX teacher_class_name ON public.class_sections(teacher_id,lower(btrim(name)));
 CREATE TABLE public.section_students (
- id uuid PRIMARY KEY DEFAULT public.uuid_generate_v4(), class_section_id uuid NOT NULL REFERENCES public.class_sections(id) ON DELETE CASCADE,
+ id uuid PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(), class_section_id uuid NOT NULL REFERENCES public.class_sections(id) ON DELETE CASCADE,
  full_name varchar(160) NOT NULL CHECK(length(btrim(full_name)) BETWEEN 1 AND 160),
  email varchar(254) NOT NULL CHECK(email=lower(btrim(email)) AND email LIKE '%@%'), created_at timestamptz NOT NULL DEFAULT now(),
  UNIQUE(class_section_id,email)

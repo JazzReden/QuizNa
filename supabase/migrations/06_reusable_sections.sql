@@ -1,11 +1,11 @@
 BEGIN;
 CREATE TABLE public.class_sections (
- id uuid PRIMARY KEY DEFAULT public.uuid_generate_v4(), teacher_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+ id uuid PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(), teacher_id uuid NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
  name varchar(80) NOT NULL CHECK(length(btrim(name)) BETWEEN 1 AND 80), created_at timestamptz NOT NULL DEFAULT now()
 );
 CREATE UNIQUE INDEX teacher_class_name ON public.class_sections(teacher_id,lower(btrim(name)));
 CREATE TABLE public.section_students (
- id uuid PRIMARY KEY DEFAULT public.uuid_generate_v4(), class_section_id uuid NOT NULL REFERENCES public.class_sections(id) ON DELETE CASCADE,
+ id uuid PRIMARY KEY DEFAULT pg_catalog.gen_random_uuid(), class_section_id uuid NOT NULL REFERENCES public.class_sections(id) ON DELETE CASCADE,
  full_name varchar(160) NOT NULL CHECK(length(btrim(full_name)) BETWEEN 1 AND 160),
  email varchar(254) NOT NULL CHECK(email=lower(btrim(email)) AND email LIKE '%@%'), created_at timestamptz NOT NULL DEFAULT now(),
  UNIQUE(class_section_id,email)

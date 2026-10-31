@@ -20,6 +20,7 @@ Create a **private GitHub repository** and upload the source, including the lock
 
 1. Create a new Supabase project and save its database password securely.
 2. In **SQL Editor**, run [deploy/supabase-bootstrap.sql](../deploy/supabase-bootstrap.sql). It combines all 13 migrations in order, inside one transaction, without sample data. It refuses to run if QuizNa tables already exist. For an existing project, back up first and apply only its pending individual migrations; do not run the fresh installer or reset the database.
+   The installer uses PostgreSQL's built-in UUID generator and does not depend on where Supabase installs `uuid-ossp`. If an older installer failed with `public.uuid_generate_v4() does not exist`, run `ROLLBACK;` in the editor, replace the entire query with the corrected installer, and run it again. Do not delete tables to bypass the existing-project guard.
 3. Enable **pg_cron** in Database Extensions, then run [deploy/supabase-expiry.sql](../deploy/supabase-expiry.sql). Confirm its named job is active. This finalizes expired attempts independently of the API.
 4. Obtain your project URL, public **anon** key, and server-only **service_role** key from project API settings. The application currently uses these named keys. The database connection string is not required by its Supabase adapter.
 5. Set Auth **Site URL** to your final Vercel origin and allow the exact URLs required by your email-confirmation flow. Enable email confirmation and configure SMTP before real student registration. Do not use a broad wildcard redirect list.

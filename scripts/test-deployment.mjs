@@ -49,12 +49,21 @@ test('fresh Supabase installer is atomic, has RLS and no demo data, and refuses 
     await db.exec(`CREATE ROLE anon; CREATE ROLE authenticated; CREATE ROLE service_role BYPASSRLS;
       CREATE SCHEMA auth; CREATE TABLE auth.users(id uuid PRIMARY KEY,email text,raw_user_meta_data jsonb DEFAULT '{}');
       CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$ SELECT nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
-      CREATE FUNCTION public.uuid_generate_v4() RETURNS uuid LANGUAGE sql AS $$ SELECT gen_random_uuid() $$;
+      CREATE SCHEMA extensions;
+      CREATE FUNCTION extensions.uuid_generate_v4() RETURNS uuid LANGUAGE sql AS $$ SELECT pg_catalog.gen_random_uuid() $$;
+      SET search_path TO public,extensions;
       CREATE PUBLICATION supabase_realtime;
       GRANT USAGE ON SCHEMA public,auth TO anon,authenticated,service_role;
       GRANT EXECUTE ON FUNCTION auth.uid() TO authenticated;`);
-    const sql = (await readFile(new URL('../deploy/supabase-bootstrap.sql', import.meta.url), 'utf8'))
-      .replace('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";', '');
+    assert.equal((await db.query("SELECT to_regprocedure('public.uuid_generate_v4()') AS helper")).rows[0].helper, null);
+    const sql = await readFile(new URL('../deploy/supabase-bootstrap.sql', import.meta.url), 'utf8');
+    // Reproduce the hosted schema mismatch and prove a failed installer can be
+    // rolled back, then rerun correctly without dropping application tables.
+    const broken = sql.replace('pg_catalog.gen_random_uuid()', 'public.uuid_generate_v4()');
+    assert.notEqual(broken, sql);
+    await assert.rejects(db.exec(broken), /uuid_generate_v4.*does not exist/);
+    await db.exec('ROLLBACK;');
+    assert.equal((await db.query("SELECT to_regclass('public.profiles') AS table_name")).rows[0].table_name, null);
     await db.exec(sql);
     const unprotected = await db.query(`SELECT c.relname FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='public' AND c.relkind='r' AND NOT c.relrowsecurity`);
     assert.deepEqual(unprotected.rows, []);

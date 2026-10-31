@@ -9,14 +9,13 @@ try {
   await db.exec(`CREATE ROLE anon; CREATE ROLE authenticated; CREATE ROLE service_role BYPASSRLS;
     CREATE SCHEMA auth; CREATE TABLE auth.users(id uuid PRIMARY KEY, email text, raw_user_meta_data jsonb DEFAULT '{}');
     CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$ SELECT nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
-    CREATE FUNCTION public.uuid_generate_v4() RETURNS uuid LANGUAGE sql AS $$ SELECT gen_random_uuid() $$;
     CREATE PUBLICATION supabase_realtime;
     GRANT USAGE ON SCHEMA public,auth TO anon,authenticated,service_role;
     GRANT EXECUTE ON FUNCTION auth.uid() TO authenticated;
   `);
-  // PGlite has built-in gen_random_uuid; only the extension installation differs from Supabase.
+  // Execute the real migrations without creating a public UUID helper or altering SQL.
   for (const file of ['01_schema.sql','02_rls.sql','04_attempt_integrity.sql','05_sections.sql','06_reusable_sections.sql','07_automatic_roster.sql','08_paper_exams.sql','09_reviewed_essay_grades.sql','10_quiz_subjects.sql','11_score_confirmation.sql','12_subject_rooms.sql','13_quiz_entry_code.sql','14_copy_quiz.sql']) {
-    const sql = (await readFile(new URL(`../supabase/migrations/${file}`, import.meta.url), 'utf8')).replace('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";', '');
+    const sql = await readFile(new URL(`../supabase/migrations/${file}`, import.meta.url), 'utf8');
     await db.exec(sql);
     check(true, `Migration ${file} executes`);
   }
