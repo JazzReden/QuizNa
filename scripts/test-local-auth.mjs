@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // Real XAMPP integration test. Only uniquely created fixture accounts/quizzes are removed.
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
@@ -92,7 +93,7 @@ try{
  for(const response of registrations){const value=await response.json();if(value.profile)fixtureIds.add(value.profile.id);}
  check(statuses[0]===201&&statuses[1]===400,'Concurrent registration creates exactly one account');
  console.log(`Local authentication checks passed: ${checks}`);
- await writeFile('docs/local-auth-check.json',JSON.stringify({passed:true,checks,verifiedAt:new Date().toISOString(),backendRestartVerified:true},null,2)+'\n');
+ await writeFile('.local/qa/reports/local-auth-check.json',JSON.stringify({passed:true,checks,verifiedAt:new Date().toISOString(),backendRestartVerified:true},null,2)+'\n');
 }catch(error){console.error(error.message);process.exitCode=1;}
 finally{
  await stop();

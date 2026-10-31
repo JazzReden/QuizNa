@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // End-to-end API test against real XAMPP using disposable accounts only.
 import { studentLastName } from "../backend/dist/modules/reports/student-name.js";
 import { spawn } from "node:child_process";
@@ -851,7 +852,7 @@ try {
     "Roster mutation endpoints enforce a tighter rate limit",
   );
   await writeFile(
-    "docs/sections-check.json",
+    ".local/qa/reports/sections-check.json",
     JSON.stringify(
       {
         passed: true,

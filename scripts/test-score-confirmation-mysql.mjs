@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // Disposable API + persistent-XAMPP regression. Never confirms an existing student's result.
 import {createRequire} from 'node:module';import {readFile,writeFile} from 'node:fs/promises';import {createHash,randomUUID} from 'node:crypto';import {createConnection} from 'mysql2/promise';import {config} from 'dotenv';import assert from 'node:assert/strict';
 config({path:'backend/.env',quiet:true});assert.equal(process.env.DATABASE_MODE,'mysql');
@@ -34,6 +35,6 @@ try{
 }finally{
  if(quizId)await sql.execute('DELETE FROM quizzes WHERE id=?',[quizId]);if(classId)await sql.execute('DELETE FROM class_sections WHERE id=?',[classId]);
  if(session?.token)await db.localAuth.logout(session.token,session.refresh_token);if(studentSession?.token)await db.localAuth.logout(studentSession.token,studentSession.refresh_token);
- if(before){const unchanged=(await hash())===before;assert.equal(unchanged,true,'Existing quizzes, scores and answers changed');if(report){report.existingRecordsUnchanged=unchanged;await writeFile('docs/SCORE_CONFIRMATION_MYSQL_CHECK.json',JSON.stringify(report,null,2));console.log(report);}}
+ if(before){const unchanged=(await hash())===before;assert.equal(unchanged,true,'Existing quizzes, scores and answers changed');if(report){report.existingRecordsUnchanged=unchanged;await writeFile('.local/qa/reports/SCORE_CONFIRMATION_MYSQL_CHECK.json',JSON.stringify(report,null,2));console.log(report);}}
  await sql.end();await app.close();
 }

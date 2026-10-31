@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 import {config} from 'dotenv';
 import {createConnection} from 'mysql2/promise';
 import {readFile,writeFile} from 'node:fs/promises';
@@ -16,5 +17,5 @@ try{
  assert.equal(await hash(),before);
  const [rooms]=await db.query('SELECT COUNT(*) AS n FROM subject_rooms');
  const result={migrated:true,subjects:rooms[0].n,existingQuizzesQuestionsScoresUnchanged:true,checkedAt:new Date().toISOString()};
- await writeFile('docs/SUBJECT_MIGRATION.json',JSON.stringify(result,null,2));console.log(result);
+ await writeFile('.local/qa/reports/SUBJECT_MIGRATION.json',JSON.stringify(result,null,2));console.log(result);
 }finally{await db.end();}

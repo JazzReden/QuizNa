@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 import { lockQa } from "./qa-lock.mjs";
 lockQa();
 // Creates a unique, disposable database and DML-only account. Never runs tests on the app database.
@@ -107,7 +108,7 @@ try {
     await admin.query(`DROP USER ${admin.escape(user)}@'localhost'`);
   await admin.end();
   await writeFile(
-    "docs/QA_MYSQL_LATEST.json",
+    ".local/qa/reports/QA_MYSQL_LATEST.json",
     JSON.stringify(
       {
         mode: "isolated disposable XAMPP database; DML-only test account",

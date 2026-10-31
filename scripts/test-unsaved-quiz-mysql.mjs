@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // Disposable, authenticated real-DB test. Existing quiz/score rows are hash checked.
 import {readFile,writeFile} from 'node:fs/promises';import {createConnection} from 'mysql2/promise';import {config} from 'dotenv';import {randomUUID,createHash} from 'node:crypto';import assert from 'node:assert/strict';
 config({path:'backend/.env',quiet:true});assert.equal(process.env.DATABASE_MODE,'mysql');assert.equal(process.env.DEMO_MODE,'true');
@@ -28,4 +29,4 @@ try{
  if(token)await request('/auth/logout',{});
  if(before)assert.equal(await signature(),before,'Existing quizzes or scores changed');await db.end();
 }
-report.existingQuizzesAndScoresUnchanged=true;await writeFile('docs/UNSAVED_QUIZ_CHECK.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
+report.existingQuizzesAndScoresUnchanged=true;await writeFile('.local/qa/reports/UNSAVED_QUIZ_CHECK.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));

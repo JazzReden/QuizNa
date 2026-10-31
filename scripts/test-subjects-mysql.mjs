@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 import {config} from 'dotenv';import {createConnection} from 'mysql2/promise';import {readFile,writeFile} from 'node:fs/promises';import {createHash} from 'node:crypto';import assert from 'node:assert/strict';
 config({path:'backend/.env',quiet:true});
 const db=await createConnection({host:process.env.MYSQL_HOST,socketPath:process.env.MYSQL_SOCKET,user:process.env.MYSQL_USER,password:process.env.MYSQL_PASSWORD,database:process.env.MYSQL_DATABASE});
@@ -29,7 +30,7 @@ try{
  const [links]=await db.query('SELECT * FROM subject_quizzes WHERE subject_id=?',[subject]);assert.equal(links.length,1);
  const content=await request('subjects/'+subject,studentToken);assert.equal(content.status,200);assert.ok(content.data.quizzes.every(q=>q.status==='published'&&!q.questions&&!q.correct_answer));
  assert.equal(await snapshot(),before);
- const report={passed:true,checks:'Authentication, ownership, invalid code, concurrent enrollment, duplicate quiz links, closed leaderboard, teacher-only settings, sanitized student content',existingQuizzesQuestionsAnswersScoresAndRostersUnchanged:true};await writeFile('docs/SUBJECT_MYSQL_CHECK.json',JSON.stringify(report,null,2));console.log(report);
+ const report={passed:true,checks:'Authentication, ownership, invalid code, concurrent enrollment, duplicate quiz links, closed leaderboard, teacher-only settings, sanitized student content',existingQuizzesQuestionsAnswersScoresAndRostersUnchanged:true};await writeFile('.local/qa/reports/SUBJECT_MYSQL_CHECK.json',JSON.stringify(report,null,2));console.log(report);
 }finally{
  if(subject)await db.query('DELETE FROM subject_rooms WHERE id=?',[subject]);
  await db.end();

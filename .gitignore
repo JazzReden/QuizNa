@@ -40,3 +40,9 @@ service-account*.json
 *.dump
 *.bak
 /cp-check.mp3
+# Historical/generated reports and classroom screenshots stay local.
+/docs/*.json
+/docs/*.png
+/docs/*.jpg
+/docs/*.jpeg
+/docs/*.pdf

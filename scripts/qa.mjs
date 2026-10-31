@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 import { lockQa } from "./qa-lock.mjs";
 lockQa();
 // Repeatable QA. Default mode does not write to the configured application database.
@@ -108,8 +109,8 @@ const summary = {
   passed: !results.some((r) => r.status === "FAIL"),
   warnings: results.filter((r) => r.status === "WARN").map((r) => r.name),
 };
-await writeFile("docs/QA_LATEST.json", JSON.stringify(summary, null, 2));
+await writeFile(".local/qa/reports/QA_LATEST.json", JSON.stringify(summary, null, 2));
 console.log(
-  `\nQA ${summary.passed ? "passed" : "has failures"}; ${summary.warnings.length} warning(s). Report: docs/QA_LATEST.json`,
+  `\nQA ${summary.passed ? "passed" : "has failures"}; ${summary.warnings.length} warning(s). Report: .local/qa/reports/QA_LATEST.json`,
 );
 if (!summary.passed) process.exitCode = 1;

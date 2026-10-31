@@ -24,9 +24,9 @@ Only one QA run may execute at a time. Avoid separate backend builds during inte
 
 ## Evidence and results
 
-- `docs/QA_LATEST.json`: most recent overall statuses, durations, test counts and advisories.
-- `docs/QA_MYSQL_LATEST.json`: sandbox cleanup and individual database scenarios.
-- `docs/QA_SUBJECT_ENTRY_COPY.json`: enrollment, code entry, confirmation and copy workflow.
+- `.local/qa/reports/QA_LATEST.json`: most recent overall statuses, durations, test counts and advisories.
+- `.local/qa/reports/QA_MYSQL_LATEST.json`: sandbox cleanup and individual database scenarios.
+- `.local/qa/reports/QA_SUBJECT_ENTRY_COPY.json`: enrollment, code entry, confirmation and copy workflow.
 - `.local/qa/`: private diagnostic logs. Do not publish these logs or attach them without reviewing for generated account/session details.
 
 `PASS` means the listed automated checks passed; `FAIL` needs investigation; `WARN` requires review. The known unpatched low-severity development-only `deepmerge` advisory is recorded as a warning. Any production dependency advisory fails the gate. No audit issue is suppressed.

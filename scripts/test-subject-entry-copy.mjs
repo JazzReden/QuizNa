@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // This scenario is only allowed inside the disposable QA database wrapper.
 import { spawn } from "node:child_process";
 import { once } from "node:events";
@@ -270,7 +271,7 @@ try {
   );
   console.log(`Subject entry and copy QA passed: ${checks.length}`);
   await writeFile(
-    "docs/QA_SUBJECT_ENTRY_COPY.json",
+    ".local/qa/reports/QA_SUBJECT_ENTRY_COPY.json",
     JSON.stringify(
       {
         passed: true,

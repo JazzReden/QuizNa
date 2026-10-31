@@ -1,4 +1,4 @@
-# QuizNa security verification — 30 October 2026
+# Security and deployment boundaries
 
 ## Findings and changes
 
@@ -15,7 +15,7 @@ The full audit still reports **9 low-severity package entries originating from o
 - Private-file requests include backend source, `.env` variants, Git configuration, schema/migrations, local fixture files and absolute-file requests. The patched deny-rule test includes raw/import query variants.
 - Production dependency audit: zero known vulnerabilities. Full audit: no moderate/high/critical advisories; the low-severity development dependency advisory above remains.
 
-Security testing used disposable in-memory data and temporary loopback gateways; it did not modify existing XAMPP quizzes or scores. Earlier scoped XAMPP copy/QR preservation evidence remains in `COPY_SCAN_MYSQL_CHECK.json`. No new public tunnel was opened, and no AI provider was called.
+Security testing used disposable in-memory data and temporary loopback gateways; it did not modify existing XAMPP quizzes or scores. Historical preview evidence is kept only in the local repository archive. No new public tunnel was opened, and no AI provider was called.
 
 ## Boundaries and deployment requirements
 

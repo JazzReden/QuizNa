@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // Explicit integration test against the configured local XAMPP database.
 // Creates one uniquely named fixture quiz and deletes only that fixture afterward.
 import { spawn } from "node:child_process";
@@ -425,7 +426,7 @@ try {
   check(true, "Expired attempts still consume the configured attempt limit");
   console.log(`MySQL persistence checks passed: ${checks}`);
   await writeFile(
-    "docs/mysql-persistence-check.json",
+    ".local/qa/reports/mysql-persistence-check.json",
     JSON.stringify(
       {
         database: process.env.MYSQL_DATABASE,

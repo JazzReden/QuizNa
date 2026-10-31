@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // Bounded loopback-only negative testing against disposable in-memory records.
 // Never targets a public host, XAMPP, or an externally supplied URL.
 import { spawn } from "node:child_process";
@@ -286,7 +287,7 @@ try {
     "Shared route-independent burst budget returns 429 before downstream handlers",
   );
   await writeFile(
-    "docs/BACKEND_SECURITY_CHECK.json",
+    ".local/qa/reports/BACKEND_SECURITY_CHECK.json",
     JSON.stringify(
       {
         checkedAt: new Date().toISOString(),

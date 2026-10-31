@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 import { config } from 'dotenv';
 import { createConnection } from 'mysql2/promise';
 import { createHash } from 'node:crypto';
@@ -25,5 +26,5 @@ try {
   }
   assert.equal(await snapshot(), before);
   const result = { migrated: true, existingQuizSettingsQuestionsVersionsAnswersScoresUnchanged: true, existingQuizzesRemainDirectEntry: columns.length ? 'prior settings preserved' : true };
-  await writeFile('docs/QUIZ_ENTRY_MIGRATION.json', JSON.stringify(result, null, 2)); console.log(result);
+  await writeFile('.local/qa/reports/QUIZ_ENTRY_MIGRATION.json', JSON.stringify(result, null, 2)); console.log(result);
 } finally { await db.end(); }

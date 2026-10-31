@@ -69,6 +69,6 @@ All `VITE_*` values are public. Never put service-role keys, database passwords,
 - Verify Supabase Realtime subscriptions and the expiry cron job, database backups/recovery, logs, and provider usage limits.
 - Rotate previously shared credentials. Run a controlled staging capacity test before promising hundreds of concurrent students.
 
-Keep the existing local app as your fallback. If a deployment fails, inspect host logs without publishing credentials; roll back the application deployment rather than resetting the database. See [QA results](QA_LATEST.json) and [security review](SECURITY_REVIEW_2026-10-30.md) for tested scope and remaining limits.
+Keep the existing local app as your fallback. If a deployment fails, inspect host logs without publishing credentials; roll back the application deployment rather than resetting the database. See [QA instructions](QA_PLAN.md) and [security boundaries](SECURITY.md) for tested scope and remaining limits.
 
 Official references: [Vercel Vite](https://vercel.com/docs/frameworks/frontend/vite), [Render Node services](https://render.com/docs/deploy-node-express-app), [Supabase pg_cron](https://supabase.com/docs/guides/database/extensions/pg_cron).

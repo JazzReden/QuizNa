@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 import {config} from 'dotenv';
 import {createConnection} from 'mysql2/promise';
 import {readFile,writeFile} from 'node:fs/promises';
@@ -11,5 +12,5 @@ try {
  const before=await digest();
  for(const sql of (await readFile('mysql/07_score_confirmation.sql','utf8')).replace(/--[^\n]*/g,'').split(';').map(s=>s.trim()).filter(Boolean))await db.query(sql);
  const after=await digest();assert.equal(after,before);
- const report={migrated:true,existingScoresAndAnswersUnchanged:before===after,checkedAt:new Date().toISOString()};await writeFile('docs/SCORE_CONFIRMATION_MIGRATION.json',JSON.stringify(report,null,2));console.log(report);
+ const report={migrated:true,existingScoresAndAnswersUnchanged:before===after,checkedAt:new Date().toISOString()};await writeFile('.local/qa/reports/SCORE_CONFIRMATION_MIGRATION.json',JSON.stringify(report,null,2));console.log(report);
 }finally{await db.end();}

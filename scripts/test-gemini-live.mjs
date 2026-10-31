@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // Opt-in live provider check using fictional test accounts and a synthetic handwriting image.
 // No save-paper or grade endpoint is called. All disposable database rows are removed.
 import {config} from 'dotenv';
@@ -42,5 +43,5 @@ finally{
  for(const id of quizzes)await db.execute('DELETE FROM quizzes WHERE id=?',[id]);
  for(const id of users)await db.execute('DELETE FROM profiles WHERE id=?',[id]);
  const after=await checksum();report.existingRecordsUnchanged=after.digest===before.digest;report.existingAttempts=after.attempts;report.existingAnswers=after.answers;
- await writeFile('docs/GEMINI_LIVE_CHECK.json',JSON.stringify(report,null,2)+'\n');await db.end();assert.equal(after.digest,before.digest,'Existing scores or answers changed');console.log('All existing answers and scores unchanged; disposable fixture removed.');
+ await writeFile('.local/qa/reports/GEMINI_LIVE_CHECK.json',JSON.stringify(report,null,2)+'\n');await db.end();assert.equal(after.digest,before.digest,'Existing scores or answers changed');console.log('All existing answers and scores unchanged; disposable fixture removed.');
 }

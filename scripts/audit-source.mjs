@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // Read-only source/ignore audit. Does not initialize, stage, commit or push this project.
 import { spawnSync } from 'node:child_process';
 import { mkdtemp, readFile, readdir, stat, rm, writeFile } from 'node:fs/promises';
@@ -63,7 +64,8 @@ try {
     'frontend/dist/index.html','backend/build/main.js','.next/cache/file','out/index.html',
     'uploads/student.pdf','frontend/uploads/sheet.png','backend/scans/answer.jpg',
     'tmp/pdfs/student.pdf','.local/classroom-preview.json','output/pdf/student.pdf',
-    '.idea/workspace.xml','.vscode/settings.json','backend/logs/server.log','.DS_Store'];
+    '.idea/workspace.xml','.vscode/settings.json','backend/logs/server.log','.DS_Store',
+    'docs/CLASSROOM_PREVIEW.json','docs/classroom-preview.png'];
   const checked = spawnSync('git',[...gitArgs,'check-ignore','--no-index','-z','--stdin'],
     {cwd:root,encoding:'utf8',input:privatePaths.join('\0')+'\0'});
   if (![0,1].includes(checked.status)) throw new Error('Ignore-rule verification failed');
@@ -95,7 +97,7 @@ try {
   const report = {date:new Date().toISOString(),repositoryInitialized:!scratch,readOnly:true,pushPerformed:false,
     candidateFiles:files.length,textFilesScanned:textFiles,ignoreCasesChecked:privatePaths.length,findings,
     limitations:'Pattern and known-local-credential scanning cannot detect every possible secret; review staged changes before committing.'};
-  await writeFile(join(root,'docs/GITHUB_AUDIT.json'),JSON.stringify(report,null,2)+'\n');
+  await writeFile(join(root,'.local/qa/reports/GITHUB_AUDIT.json'),JSON.stringify(report,null,2)+'\n');
   console.log(JSON.stringify(report,null,2));
   if (findings.length) process.exitCode=1;
 } finally { if (scratch) await rm(scratch,{recursive:true,force:true}); }

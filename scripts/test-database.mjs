@@ -26,7 +26,7 @@ try {
   await db.query(`INSERT INTO auth.users(id,email,raw_user_meta_data) VALUES($1,'teacher@quizna.dev','{"role":"teacher"}'),($2,'student@quizna.dev','{"role":"teacher"}'),($3,'other@quizna.dev','{}')`, [teacher,student,secondTeacher]);
   check((await db.query(`SELECT role FROM public.profiles WHERE id=$1`,[student])).rows[0].role==='student','Signup metadata cannot grant teacher access');
   await db.query(`UPDATE public.profiles SET role='teacher' WHERE id IN ($1,$2)`,[teacher,secondTeacher]);
-  await db.exec(await readFile(new URL('../supabase/seed.sql',import.meta.url),'utf8').then(sql => sql.replace("    ('b0000000-0000-0000-0000-000000000003', 'student2@quizna.dev', 'Emma Watson', 'student')", "    ('b0000000-0000-0000-0000-000000000002', 'student@quizna.dev', 'Alex Mercer', 'student')")));
+  await db.exec(await readFile(new URL('../backend/test/fixtures/quiz-database.sql',import.meta.url),'utf8'));
   const command = async (action, actor, payload) => (await db.query(`SELECT public.quizna_attempt_command($1,$2,$3::jsonb) AS result`,[action,actor,JSON.stringify(payload)])).rows[0].result;
   const first = await command('start',student,{access_code:' cs101 '});
   check(first.attempt.status==='in_progress','Access code normalized and attempt started');

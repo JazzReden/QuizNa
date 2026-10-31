@@ -1,14 +1,13 @@
 -- ==============================================================================
--- QuizNa Optional Development Fixtures: Demo Profiles, Quizzes, Questions
+-- QuizNa isolated PostgreSQL test fixture; never apply to a hosted database
 -- ==============================================================================
 
 -- 1. Demo Profiles (Note: in production Supabase auth.users triggers profile creation;
 -- here we seed test IDs matching auth.users)
 INSERT INTO public.profiles (id, email, full_name, role)
 VALUES
-    ('a0000000-0000-0000-0000-000000000001', 'teacher@quizna.dev', 'Prof. Sarah Connor', 'teacher'),
-    ('b0000000-0000-0000-0000-000000000002', 'student@quizna.dev', 'Alex Mercer', 'student'),
-    ('b0000000-0000-0000-0000-000000000003', 'student2@quizna.dev', 'Emma Watson', 'student')
+    ('a0000000-0000-0000-0000-000000000001', 'teacher@quizna.dev', 'Test Teacher', 'teacher'),
+    ('b0000000-0000-0000-0000-000000000002', 'student@quizna.dev', 'Test Student', 'student')
 ON CONFLICT (id) DO NOTHING;
 
 -- 2. Demo Quiz

@@ -1,9 +1,0 @@
-# Compact answer sheets and campus palette
-
-Newly issued sheets use layout revision 2: up to 60 objective rows in three columns for two-to-four choices, fewer columns for wider five-to-eight choice sets, and separate lined pages for essays and short answers. Question numbers and frozen option IDs remain authoritative even when written questions are moved to separate pages. Each page retains the original QR geometry and four corner markers; bubble coordinates are stored in the frozen layout rather than guessed by the camera.
-
-Revision 1 sheets keep their saved page and bubble coordinates. Reprinting an existing sheet reuses its identity and layout. No database migration is needed because layouts are stored as JSON. Existing sheets are not rewritten or invalidated. A new unsaved Liam Dela Cruz sheet demonstrates the 60-question exam in three pages; Carla's original five pages remain valid.
-
-The app's shared Tailwind theme now uses muted teal primary controls, warm paper-like backgrounds, and dark green-gray text. Auth branding uses a solid accent instead of a purple gradient. Printed sheets remain monochrome for contrast and low ink use. Primary teal 600 against white has a 5.88:1 contrast ratio; the secondary text color against white is 5.13:1. Camera controls keep a dark background for visibility.
-
-Validation: 135 backend tests, 27 frontend tests, 32 authenticated XAMPP paper checks, TypeScript/build checks, all three final PDF page QR codes, blank and filled optical detection of 55 objective answers, and recognition of five written responses. The three-page PDF was rendered and visually checked. Existing 45 scores and 15 old layouts were compared with their pre-change values and remain unchanged. No sample result was submitted. Physical printer/camera accuracy remains a device test.

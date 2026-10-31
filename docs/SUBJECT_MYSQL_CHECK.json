@@ -1,5 +1,0 @@
-{
-  "passed": true,
-  "checks": "Authentication, ownership, invalid code, concurrent enrollment, duplicate quiz links, closed leaderboard, teacher-only settings, sanitized student content",
-  "existingQuizzesQuestionsAnswersScoresAndRostersUnchanged": true
-}

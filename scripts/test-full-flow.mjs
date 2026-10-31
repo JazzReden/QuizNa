@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // End-to-end API test against real XAMPP using disposable accounts only.
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
@@ -343,7 +344,7 @@ try {
   await request('/auth/me', student.token, 'GET', undefined, 401);
   check(true, 'Logout revokes student session');
   await writeFile(
-    'docs/full-flow-check.json',
+    '.local/qa/reports/full-flow-check.json',
     JSON.stringify(
       {
         passed: true,

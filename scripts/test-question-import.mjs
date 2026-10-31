@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // End-to-end API test against real XAMPP using disposable accounts only.
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
@@ -365,7 +366,7 @@ try {
     'Mixed imported questions complete submission, manual grading and released results',
   );
   await writeFile(
-    'docs/question-import-check.json',
+    '.local/qa/reports/question-import-check.json',
     JSON.stringify(
       {
         passed: true,

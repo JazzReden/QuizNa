@@ -1,3 +1,4 @@
+import "./qa-report-directory.mjs";
 // Real local XAMPP/API regression; only disposable profiles, sections and quizzes are written.
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
@@ -90,5 +91,5 @@ try{
  await call(`/quizzes/${quiz.id}`,teacher.token,'PUT',{exam_format:'online'},400);check(true,'Published exam format cannot change');
  await stop();await start();check((await call(`/paper/sheet/${sheet.id}`,teacher.token)).attempt_id===saved.id,'Sheet and saved result survive a backend restart');
  const [counts]=await db.execute('SELECT count(*) n FROM quiz_attempts WHERE paper_sheet_id=?',[sheet.id]);check(Number(counts[0].n)===1,'Database confirms one attempt per sheet');
- await writeFile('docs/paper-flow-check.json',JSON.stringify({passed:true,checkedAt:new Date().toISOString(),checks:checks.length,scenarios:checks},null,2)+'\n');console.log(`Paper checks passed: ${checks.length}`);
+ await writeFile('.local/qa/reports/paper-flow-check.json',JSON.stringify({passed:true,checkedAt:new Date().toISOString(),checks:checks.length,scenarios:checks},null,2)+'\n');console.log(`Paper checks passed: ${checks.length}`);
 }catch(e){console.error(e.message);process.exitCode=1;}finally{await stop();for(const id of quizzes)await db.execute('DELETE FROM quizzes WHERE id=?',[id]);for(const id of users)await db.execute('DELETE FROM profiles WHERE id=?',[id]);await db.end();}
