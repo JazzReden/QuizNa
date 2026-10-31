@@ -4,16 +4,16 @@
 
 The production dependency audit reports **0 known advisories**. The full development audit identified a moderate Vite 6.4.4 private-file disclosure advisory. Vite was updated to **6.4.5**, the lockfile updated, and the running loopback development server restarted with the patch. Query variants (`raw`, `import`, `url`, `inline`) now receive no private fixture content. The fixture is non-secret and removed after the test.
 
-The full audit still reports **9 low-severity package entries originating from one deepmerge advisory** in the Jest/Nest CLI development dependency chain. No patched deepmerge release is published. This package is not in the production dependency tree. No unsupported tool downgrade or advisory suppression was applied. Treat repository build/test configuration as trusted code and monitor the upstream fix.
+The audit rechecked on 31 October 2026 reports **4 low and 19 moderate development-tooling dependency entries**, tracing to deepmerge, glob and minimatch advisories. These packages are absent from the production dependency tree. npm suggests incompatible major changes or downgrades for some chains; no forced upgrade, advisory suppression or broad dependency change was applied during the deployment repair. Treat build/test configuration as trusted code and address these tooling advisories separately before declaring the full QA gate clean.
 
 ## Verification completed
 
 - **38 isolated API abuse checks:** missing/forged authentication, student access to teacher routes, inaccessible copy destinations, malformed UUID/injection inputs, JSON/encoding/body bounds, copy ownership/publication-field injection, concurrent copy idempotency, copy throttling, access-code brute force, spoofed forwarding headers, account-wide budgets and route-independent burst limits.
-- **233 backend unit tests**, **194 frontend tests**, **104 PostgreSQL integration checks**. Includes owner isolation, student score-release boundaries, quiz-copy transactions and service-role-only execution, QR token validation, idempotent submission, server deadlines and grading.
+- **241 backend unit tests**, **194 frontend tests**, **104 PostgreSQL integration checks**. Includes owner isolation, student score-release boundaries, quiz-copy transactions and service-role-only execution, QR token validation, idempotent submission, server deadlines and grading.
 - **4 gateway/link tests:** symlink/private-file protection, authentication preservation, forwarded-header stripping and HTTPS link validation.
 - TypeScript/production builds and frontend private-file checks passed. Both frontend and phone compiled bundles are inspected for privileged server markers, source maps and configured private credential values; values are never printed in test output.
 - Private-file requests include backend source, `.env` variants, Git configuration, schema/migrations, local fixture files and absolute-file requests. The patched deny-rule test includes raw/import query variants.
-- Production dependency audit: zero known vulnerabilities. Full audit: no moderate/high/critical advisories; the low-severity development dependency advisory above remains.
+- Production dependency audit: zero known vulnerabilities. Full audit: no high/critical advisories; development-only low/moderate advisories remain as listed above.
 
 Security testing used disposable in-memory data and temporary loopback gateways; it did not modify existing XAMPP quizzes or scores. Historical preview evidence is kept only in the local repository archive. No new public tunnel was opened, and no AI provider was called.
 
@@ -39,3 +39,7 @@ This is a repeatable application-level security verification, not a guarantee ag
 
 - [Vite file-deny bypass, patched in 6.4.5](https://github.com/advisories/GHSA-8g5g-mxqh-grgj)
 - [deepmerge prototype poisoning; no patched release](https://github.com/advisories/GHSA-gcqx-w48m-w2h4)
+
+## Cross-platform build lockfile
+
+The Vercel build exposed missing Linux-native optional dependency records in a lockfile produced on macOS. Registry records were restored for native build packages without changing existing package versions. Deployment tests now check matching Linux/macOS records and integrity metadata. Clean Linux-targeted package installation can be simulated locally, but only the hosted Linux build verifies execution on Linux.

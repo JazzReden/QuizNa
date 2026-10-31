@@ -58,6 +58,8 @@ Import the same repository. Keep **Root Directory at the repository root**, not 
 
 Set the public variables from [deploy/vercel.env.example](../deploy/vercel.env.example), using the actual Render origin and matching Supabase project. Configure Production and the intended Preview environment explicitly. Build fails if required values are missing, placeholders, or demo mode is enabled. Rebuild after changing public variables.
 
+Keep Install Command at `npm ci --include=dev --include=optional`. Native Rollup, esbuild, Tailwind and Lightning CSS packages must stay in the lockfile for both macOS and Linux. `npm run test:deployment` checks that platform coverage. If an older deployment failed with a missing Linux native module, deploy the corrected lockfile without reusing the old build cache. Do not remove the lockfile or run `npm audit fix --force` as a deployment workaround.
+
 All `VITE_*` values are public. Never put service-role keys, database passwords, AI keys, or deployment tokens in them. Backend secrets belong only in Render. Update Render CORS and Supabase Auth URLs after Vercel assigns the final domain. Do not add arbitrary preview domains to production CORS; use a separate staging database for previews.
 
 ## 5. Check before inviting a class

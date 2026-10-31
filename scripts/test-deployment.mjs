@@ -14,6 +14,24 @@ const backend = {
   SUPABASE_SERVICE_ROLE_KEY: 'private-test-key', FRONTEND_URL: 'https://quiz.example.com', TRUST_PROXY_HOPS: '1',
 };
 
+test('lockfile includes matching Linux and macOS native build packages', async () => {
+  const {packages} = JSON.parse(await readFile(new URL('../package-lock.json', import.meta.url), 'utf8'));
+  const targets = {
+    rollup: ['@rollup/rollup-linux-x64-gnu', '@rollup/rollup-darwin-arm64'],
+    esbuild: ['@esbuild/linux-x64', '@esbuild/darwin-arm64'],
+    '@tailwindcss/oxide': ['@tailwindcss/oxide-linux-x64-gnu', '@tailwindcss/oxide-darwin-arm64'],
+    lightningcss: ['lightningcss-linux-x64-gnu', 'lightningcss-darwin-arm64'],
+  };
+  for (const [parent, nativePackages] of Object.entries(targets)) {
+    for (const name of nativePackages) {
+      const entry = packages[`node_modules/${name}`];
+      assert.ok(entry, `${name} must be locked for clean CI installs`);
+      assert.equal(entry.version, packages[`node_modules/${parent}`].optionalDependencies[name]);
+      assert.ok(entry.integrity, `${name} must have registry integrity metadata`);
+    }
+  }
+});
+
 test('production configuration rejects local, demo, placeholder and browser-secret settings', () => {
   assert.deepEqual(validateProductionConfig('frontend', frontend), []);
   assert.deepEqual(validateProductionConfig('backend', backend), []);
@@ -33,6 +51,7 @@ test('production configuration rejects local, demo, placeholder and browser-secr
 test('Vercel publishes only the compiled frontend, supports deep links and permits its camera', async () => {
   const config = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
   assert.equal(config.outputDirectory, 'frontend/dist');
+  assert.equal(config.installCommand, 'npm ci --include=dev --include=optional');
   assert.equal(config.buildCommand, 'npm run build:production:frontend');
   assert.deepEqual(config.rewrites, [{source:'/(.*)',destination:'/index.html'}]);
   const headers = Object.fromEntries(config.headers[0].headers.map(h => [h.key,h.value]));
