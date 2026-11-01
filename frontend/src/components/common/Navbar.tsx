@@ -41,7 +41,7 @@ export const Navbar: React.FC = () => {
   }, [location.pathname]);
   if (
     location.pathname.startsWith("/take/") ||
-    ["/login", "/", "/welcome", "/guide"].includes(location.pathname)
+    ["/auth/confirm", "/login", "/", "/welcome", "/guide"].includes(location.pathname)
   )
     return null;
   return (

@@ -23,7 +23,7 @@ Create a **private GitHub repository** and upload the source, including the lock
    The installer uses PostgreSQL's built-in UUID generator and does not depend on where Supabase installs `uuid-ossp`. If an older installer failed with `public.uuid_generate_v4() does not exist`, run `ROLLBACK;` in the editor, replace the entire query with the corrected installer, and run it again. Do not delete tables to bypass the existing-project guard.
 3. Enable **pg_cron** in Database Extensions, then run [deploy/supabase-expiry.sql](../deploy/supabase-expiry.sql). Confirm its named job is active. This finalizes expired attempts independently of the API.
 4. Obtain your project URL, public **anon** key, and server-only **service_role** key from project API settings. The application currently uses these named keys. The database connection string is not required by its Supabase adapter.
-5. Set Auth **Site URL** to your final Vercel origin and allow the exact URLs required by your email-confirmation flow. Enable email confirmation and configure SMTP before real student registration. Do not use a broad wildcard redirect list.
+5. Set Auth **Site URL** to your final Vercel origin and allow the exact URLs required by your email-confirmation flow. Add `https://YOUR-FRONTEND-DOMAIN/auth/confirm` to Auth → URL Configuration → Redirect URLs (for QuizNa’s current production domain: `https://quizna.vercel.app/auth/confirm`). The API builds this callback from its trusted `FRONTEND_URL`; it never accepts a signup redirect from the browser. Enable email confirmation and configure SMTP before real student registration. Do not use a broad wildcard redirect list.
 6. The migrations provision new Auth users as students, ignoring role metadata. To create the first teacher, create/confirm that trusted user through Supabase Authentication, then run the following in SQL Editor, replacing the UUID with that user's Auth ID:
 
 ```sql
@@ -75,3 +75,8 @@ All `VITE_*` values are public. Never put service-role keys, database passwords,
 Keep the existing local app as your fallback. If a deployment fails, inspect host logs without publishing credentials; roll back the application deployment rather than resetting the database. See [QA instructions](QA_PLAN.md) and [security boundaries](SECURITY.md) for tested scope and remaining limits.
 
 Official references: [Vercel Vite](https://vercel.com/docs/frameworks/frontend/vite), [Render Node services](https://render.com/docs/deploy-node-express-app), [Supabase pg_cron](https://supabase.com/docs/guides/database/extensions/pg_cron).
+
+
+### Verify the account confirmation experience
+
+Deploy the backend and frontend changes together. Registration awaiting confirmation returns a successful `confirmation_required` response; the browser shows a green “Check your email” screen and clears password fields. New email links redirect to `/auth/confirm`. QuizNa clears the URL fragment immediately, verifies the access token through the authenticated API, then restores the session and opens the dashboard for the server-assigned role. No passwords are kept for automatic login. Expired, used, or invalid links offer password sign-in. Confirmation signs in the browser where the email link opens; it does not automatically sign in a different device/browser. Test with a new account and a fresh email link after deployment; do not reuse a previously consumed confirmation link. Existing quizzes, scores, role approval rules, and password login are unchanged.

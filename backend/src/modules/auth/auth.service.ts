@@ -108,7 +108,7 @@ export class AuthService {
 
   async register(
     dto: RegisterDto,
-  ): Promise<{ token: string; refresh_token?: string; profile: UserProfile }> {
+  ): Promise<{ token: string; refresh_token?: string; profile: UserProfile } | { confirmation_required: true }> {
     if (this.db.isMysql) {
       if (process.env.LOCAL_REGISTRATION_ENABLED === "false")
         throw new BadRequestException(
@@ -138,16 +138,16 @@ export class AuthService {
     const { data, error } = await auth.auth.signUp({
       email: dto.email.trim().toLowerCase(),
       password: dto.password,
-      options: { data: { full_name: dto.full_name } },
+      options: {
+        data: { full_name: dto.full_name },
+        ...(process.env.FRONTEND_URL ? { emailRedirectTo: `${process.env.FRONTEND_URL.replace(/\/$/, "")}/auth/confirm` } : {}),
+      },
     });
     if (error || !data.user)
       throw new BadRequestException(
         "Unable to register. Check your details and try again",
       );
-    if (!data.session)
-      throw new BadRequestException(
-        "Check your email to confirm your account, then sign in",
-      );
+    if (!data.session) return { confirmation_required: true };
     const profile = await this.db.getProfile(data.user.id);
     if (!profile)
       throw new BadRequestException(

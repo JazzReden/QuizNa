@@ -1,3 +1,4 @@
+import { ConfirmEmailPage } from "./pages/auth/ConfirmEmailPage";
 import { QuizEntryPage } from "./pages/student/QuizEntryPage";
 import { SubjectsPage } from "./pages/subjects/SubjectsPage";
 import React from "react";
@@ -94,6 +95,7 @@ export const App: React.FC = () => {
               <Routes>
                 <Route path="/" element={<RootRedirect />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/auth/confirm" element={<ConfirmEmailPage />} />
                 <Route path="/welcome" element={<LandingPage />} />
                 <Route path="/guide" element={<GuidePage />} />
 

@@ -15,7 +15,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { safeReturnPath } from "../../utils/return-path";
 import { api } from "../../api/client";
 import { useAuth } from "../../context/auth-context";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight, BookOpen, MailCheck } from "lucide-react";
 
 export const LoginPage: React.FC = () => {
   const location = useLocation();
@@ -39,6 +39,7 @@ export const LoginPage: React.FC = () => {
     options?.registration !== false;
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [confirmationEmail, setConfirmationEmail] = useState("");
 
   const { login, register, switchDemoUser } = useAuth();
   const navigate = useNavigate();
@@ -78,12 +79,18 @@ export const LoginPage: React.FC = () => {
         }
         if (password !== confirmPassword)
           throw new Error("The passwords do not match");
-        await register(
+        const result = await register(
           fullName,
           email,
           options?.teacherRegistration ? role : "student",
           password,
         );
+        if (result?.confirmation_required) {
+          setConfirmationEmail(email.trim());
+          setPassword("");
+          setConfirmPassword("");
+          return;
+        }
       } else {
         if (!email.trim()) {
           throw new Error("Please enter your email");
@@ -115,6 +122,7 @@ export const LoginPage: React.FC = () => {
 
   const switchMode = () => {
     setError(null);
+    setConfirmationEmail("");
     navigate(
       { pathname: "/login", search: isRegistering ? "" : "?mode=register" },
       { state: location.state, replace: true },
@@ -132,6 +140,17 @@ export const LoginPage: React.FC = () => {
             className="qa-form-panel"
             aria-labelledby="auth-form-title"
           >
+            {confirmationEmail ? (
+              <div className="qa-confirmation" role="status">
+                <span className="qa-confirmation-icon"><MailCheck size={32} aria-hidden="true" /></span>
+                <p className="ql-eyebrow">ONE LAST THING</p>
+                <h1 id="auth-form-title">Check your email</h1>
+                <p>We sent a confirmation link to <strong>{confirmationEmail}</strong>.</p>
+                <p>Open the link to confirm your account and enter QuizNa.</p>
+                <p className="qa-hint">Can’t find it? Check your spam folder.</p>
+                <button className="qn-button-primary qa-submit" onClick={switchMode}>Back to sign in <ArrowRight size={17} /></button>
+              </div>
+            ) : <>
             <p className="ql-eyebrow">
               {isRegistering ? "LET’S GET STARTED" : "WELCOME BACK"}
             </p>
@@ -278,6 +297,7 @@ export const LoginPage: React.FC = () => {
                 </button>
               </p>
             )}
+            </>}
           </section>
         </div>
         <section className="qa-intro" aria-labelledby="auth-intro-title">

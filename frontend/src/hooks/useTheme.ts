@@ -31,7 +31,7 @@ export function ThemeController() {
   const { pathname } = useLocation();
   useTheme();
   useLayoutEffect(() => {
-    publicIsLight = /^\/(?:welcome|login|guide)?\/?$/.test(pathname);
+    publicIsLight = /^\/(?:welcome|login|guide|auth\/confirm)?\/?$/.test(pathname);
     applyTheme(publicIsLight ? "light" : preferredTheme());
     return () => {
       publicIsLight = false;

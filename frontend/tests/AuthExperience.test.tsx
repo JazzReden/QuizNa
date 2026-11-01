@@ -197,3 +197,17 @@ it("keeps teacher sign in available when public teacher registration is disabled
   fireEvent.click(screen.getByRole("button",{name:"Create account",exact:true}));
   expect((screen.getByRole("button",{name:"Teacher",exact:true}) as HTMLButtonElement).disabled).toBe(true);
 });
+
+it("shows a success screen after registration pending email confirmation", async () => {
+  auth.register.mockResolvedValue({ confirmation_required: true });
+  show("/login?mode=register");
+  await screen.findByLabelText("Password");
+  fireEvent.change(screen.getByLabelText("Full name"), {target:{value:"New Student"}});
+  fireEvent.change(screen.getByLabelText("Email address"), {target:{value:"new@example.com"}});
+  fireEvent.change(screen.getByLabelText("Password"), {target:{value:"safe-password"}});
+  fireEvent.change(screen.getByLabelText("Confirm password"), {target:{value:"safe-password"}});
+  fireEvent.click(screen.getByRole("button", {name:"Create account", exact:true}));
+  expect(await screen.findByRole("heading", {name:"Check your email"})).toBeTruthy();
+  expect(screen.queryByRole("alert")).toBeNull();
+  expect(screen.queryByLabelText("Password")).toBeNull();
+});

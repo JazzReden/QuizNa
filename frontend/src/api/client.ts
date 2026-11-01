@@ -236,10 +236,20 @@ class ApiClient {
       token: string;
       refresh_token?: string;
       profile: any;
-    }>("/api/auth/register", {
+    } | { confirmation_required: true }>("/api/auth/register", {
       method: "POST",
       body: JSON.stringify({ full_name, email, role, password }),
     });
+  }
+
+  async verifyConfirmationSession(token: string) {
+    // Never use an existing account's refresh token to validate a new confirmation.
+    const response = await fetch(`${API_URL}/api/auth/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+      cache: "no-store",
+    });
+    if (!response.ok) throw new Error("Please sign in to continue.");
+    return response.json() as Promise<import("../types").UserProfile>;
   }
 
   async getMe() {

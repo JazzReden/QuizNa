@@ -11,7 +11,8 @@ export interface AuthContextType {
     email: string,
     role: UserRole,
     password?: string,
-  ) => Promise<void>;
+  ) => Promise<void | { confirmation_required: true }>;
+  confirmationError?: string;
   logout: () => Promise<void>;
   switchDemoUser: (role: UserRole) => Promise<void>;
 }

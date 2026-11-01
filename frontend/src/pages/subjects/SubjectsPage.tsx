@@ -3,7 +3,7 @@ import { SubjectLeaderboard } from "../../components/subjects/SubjectLeaderboard
 import { SubjectQuizList } from "../../components/subjects/SubjectQuizList";
 import { useCallback, useEffect, useState, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { BookOpen, ChevronRight, Plus, ArrowLeft, Trophy } from "lucide-react";
+import { BookOpen, ChevronRight, Plus, ArrowLeft, Trophy, Search, Users } from "lucide-react";
 import { api } from "../../api/client";
 import { useAuth } from "../../context/auth-context";
 import { useDashboardReady } from "../../context/PostLoginContext";
@@ -34,6 +34,7 @@ export function SubjectsPage() {
     [busy, setBusy] = useState(false),
     [form, setForm] = useState(false),
     [tab, setTab] = useState("quizzes");
+  const [search, setSearch] = useState("");
   const [name, setName] = useState(""),
     [sectionName, setSectionName] = useState(""),
     [code, setCode] = useState(""),
@@ -137,6 +138,8 @@ export function SubjectsPage() {
             teacher ? (
               <button
                 className="qn-button-primary"
+                aria-expanded={form}
+                aria-controls="new-subject-form"
                 onClick={() => setForm(!form)}
               >
                 <Plus size={17} />
@@ -315,6 +318,7 @@ export function SubjectsPage() {
           )}
           {teacher && form && (
             <form
+              id="new-subject-form"
               className="qn-subject-create"
               onSubmit={(e) => {
                 e.preventDefault();
@@ -408,8 +412,12 @@ export function SubjectsPage() {
               </div>
             </form>
           )}
+          {rooms.length > 0 && <div className="qn-subject-toolbar">
+            <p>{rooms.length} {rooms.length === 1 ? "subject" : "subjects"}</p>
+            <label className="qn-subject-search"><Search size={18} aria-hidden="true" /><span className="sr-only">Find a subject</span><input value={search} onChange={e => setSearch(e.target.value)} placeholder="Find a subject or section" /></label>
+          </div>}
           <div className="qn-subject-grid">
-            {rooms.map((r) => (
+            {rooms.filter(r => `${r.name} ${r.section_name}`.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())).map((r) => (
               <Link
                 className="qn-subject-card"
                 to={`${base}/subjects/${r.id}`}
@@ -421,21 +429,26 @@ export function SubjectsPage() {
                 </span>
                 <span>
                   <strong>{r.name}</strong>
-                  <small>{r.section_name}</small>
+                  <small><Users size={14} aria-hidden="true" />{r.section_name}</small>
                 </span>
                 <ChevronRight size={19} />
               </Link>
             ))}
           </div>
-          {!rooms.length && (
+          {rooms.length > 0 && search.trim() && !rooms.some(r => `${r.name} ${r.section_name}`.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())) && <EmptyState title="No matching subjects" description="Try another subject or section name." />}
+          {!rooms.length && !form && (
+            <div className="qn-subject-welcome">
+            <span className="qn-subject-icon" aria-hidden="true"><BookOpen size={32} /></span>
             <EmptyState
               title={teacher ? "Create your first subject" : "No subjects yet"}
               description={
                 teacher
-                  ? "Choose an existing section or type a new one with your subject."
+                  ? "Keep quizzes and class records together. Add a subject and its section to begin."
                   : "Enter the subject code from your teacher."
               }
             />
+            {teacher && <button className="qn-button-primary" onClick={() => setForm(true)}><Plus size={17} />Create subject</button>}
+            </div>
           )}
           {!teacher && (
             <Link className="qn-button-quiet" to="/student/activity">

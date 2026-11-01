@@ -42,7 +42,20 @@ describe('Live authentication', () => {
   });
   it('reports confirmation requirement without issuing a session', async () => {
     auth.auth.signUp.mockResolvedValue({ data: { user, session: null } });
-    await expect(service.register({ email: user.email, full_name: 'Student', role: 'student', password: 'strong-password' })).rejects.toThrow('confirm');
+    expect(await service.register({ email: user.email, full_name: 'Student', role: 'student', password: 'strong-password' })).toEqual({confirmation_required: true});
+    expect(db.getProfile).not.toHaveBeenCalled();
+  });
+  it('uses the configured frontend callback without taking a redirect from the user', async () => {
+    const previous = process.env.FRONTEND_URL;
+    process.env.FRONTEND_URL = 'https://quizna.example';
+    try {
+      auth.auth.signUp.mockResolvedValue({data:{user,session:null}});
+      await service.register({email:user.email,full_name:'Student',role:'student',password:'strong-password'});
+      expect(auth.auth.signUp).toHaveBeenCalledWith(expect.objectContaining({options:{data:{full_name:'Student'},emailRedirectTo:'https://quizna.example/auth/confirm'}}));
+    } finally {
+      if (previous === undefined) delete process.env.FRONTEND_URL;
+      else process.env.FRONTEND_URL = previous;
+    }
   });
   it('refreshes through an isolated Supabase client', async () => {
     auth.auth.refreshSession.mockResolvedValue({ data: { session: { access_token: 'new', refresh_token: 'rotated' } } });

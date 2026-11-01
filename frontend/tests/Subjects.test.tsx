@@ -330,3 +330,14 @@ it("validates a blank subject before creating any section", async () => {
   expect(mock.api.createClass).not.toHaveBeenCalled();
   expect(mock.api.createSubject).not.toHaveBeenCalled();
 });
+
+it("filters subjects by section name without changing the source data", async () => {
+  mock.api.listSubjects.mockResolvedValue([room,{...room,id:"other",name:"Biology",section_name:"Filomena"}]);
+  show();
+  await screen.findByRole("link",{name:"Research, Vincent"});
+  fireEvent.change(screen.getByRole("textbox",{name:"Find a subject"}),{target:{value:"filomena"}});
+  expect(screen.getByRole("link",{name:"Biology, Filomena"})).toBeTruthy();
+  expect(screen.queryByRole("link",{name:"Research, Vincent"})).toBeNull();
+  fireEvent.change(screen.getByRole("textbox",{name:"Find a subject"}),{target:{value:"missing"}});
+  expect(screen.getByText("No matching subjects")).toBeTruthy();
+});

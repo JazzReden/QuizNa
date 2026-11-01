@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { UserProfile, UserRole } from "../types";
 import { api } from "../api/client";
 import { AuthContext } from "./auth-context";
@@ -12,8 +12,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   );
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  const [confirmationError, setConfirmationError] = useState("");
+  const initialization = useRef<Promise<void> | null>(null);
+
   useEffect(() => {
     const initializeAuth = async () => {
+      const fragment = new URLSearchParams(window.location.hash.slice(1));
+      if (fragment.has("access_token") || fragment.has("error") || fragment.has("error_description")) {
+        const access = fragment.get("access_token");
+        const refresh = fragment.get("refresh_token");
+        // Strip credentials immediately, before any async work or navigation.
+        window.history.replaceState(window.history.state, "", window.location.pathname + window.location.search);
+        if (access && refresh && !fragment.has("error") && fragment.get("type") === "signup") {
+          try {
+            const profile = await api.verifyConfirmationSession(access);
+            localStorage.setItem("quizna_token", access);
+            localStorage.setItem("quizna_refresh", refresh);
+            setToken(access);
+            setUser(profile);
+          } catch {
+            setConfirmationError("Your email link could not sign you in. Try signing in with your password.");
+          }
+        } else {
+          setConfirmationError("This confirmation link is invalid or has expired. Try signing in or request a new link.");
+        }
+        setIsLoading(false);
+        return;
+      }
       const storedToken = localStorage.getItem("quizna_token");
       if (storedToken) {
         try {
@@ -31,7 +56,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       setIsLoading(false);
     };
 
-    initializeAuth();
+    initialization.current ??= initializeAuth();
   }, []);
 
   const login = async (email: string, password?: string, role?: UserRole) => {
@@ -58,6 +83,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsLoading(true);
     try {
       const res = await api.register(fullName, email, role, password);
+      if ("confirmation_required" in res) return res;
       localStorage.setItem("quizna_token", res.token);
       if (res.refresh_token)
         localStorage.setItem("quizna_refresh", res.refresh_token);
@@ -123,6 +149,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         user,
         token,
         isLoading,
+        confirmationError,
         login,
         register,
         logout,

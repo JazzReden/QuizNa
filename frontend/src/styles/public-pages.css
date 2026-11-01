@@ -796,3 +796,10 @@
 .qa-role button { min-height:46px; }
 .qa-role button:disabled { opacity:.5; cursor:not-allowed; }
 .qa-role button:focus-visible { outline:2px solid var(--qn-accent); outline-offset:3px; }
+
+/* Account confirmation is a successful next step, never an error banner. */
+.qa-confirmation { text-align: center; }
+.qa-confirmation-icon { display: grid; place-items: center; width: 68px; height: 68px; margin: 0 auto 24px; border-radius: 22px; color: #327f62; background: #eaf4ee; }
+.qa-confirmation p { color: #597368; line-height: 1.65; margin: 16px 0; overflow-wrap: anywhere; }
+.qa-confirmation strong { color: #244c3c; }
+.qa-confirmation .qa-submit { margin-top: 24px; text-decoration: none; }
